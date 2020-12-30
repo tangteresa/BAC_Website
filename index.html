@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Meta data about the website -->
+
+<head>
+  <!-- Shows up in browser tab -->
+  <title>
+    Hello World
+  </title>
+  <style>
+    :root {
+      --iwidth: 5%;
+      --iheight: 10%;
+      --iheightdec: 0.1;
+    }
+
+    img {
+      display: block;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: var(--iwidth);
+      height: var(--iheight);
+    }
+
+    ul {
+      position: fixed;
+      top: 0px;
+      left: var(--iwidth);
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      height: var(--iheight);
+      /*white-space: nowrap;
+      font-size: 0;*/
+      background-color: cyan;
+      width: calc(100% - var(--iwidth));
+    }
+
+    li {
+      display: inline-block;
+      /* Height does not include padding, margins, etc. */
+      /* Height of child elements is with reference to parent height */
+      background-color: green;
+      height: 100%;
+    }
+
+    li a:hover {
+      background-color: #34e5eb;
+    }
+
+    li a {
+      text-decoration: none;
+      color: white;
+      text-align: center;
+      vertical-align: middle;
+      font-family: Arial, Helvetica, sans-serif;
+      display: table-cell;
+      /* Force conversion to pixels */
+      /* Need pixels because % would be relative to parent container */
+      height: calc(var(--iheightdec) * 100vh - 0px);
+      /* Force conversion to pixels */
+      padding-right: 20px;
+      padding-left: 20px;
+      width: 100%;
+    }
+
+    li a:active {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="whitesimscat.png" alt="Sims vet clinic cat">
+
+  <ul>
+    <!-- Skip closing tag to remove spaces between inline elements-->
+    <li><a href="index.html">Home</a>
+    <li><a href="cats.html">Cats</a>
+    <li><a href="cats.html">Thoughts</a>
+    <li><a href="cats.html">Miscellaneous</a>
+    <li><a href="cats.html">Travel</a>
+    <li><a href="cats.html">Contact</a>
+  </ul>
+</body>
+
+</html>
