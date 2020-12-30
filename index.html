@@ -14,6 +14,8 @@
       --iwidth: 5%;
       --iheight: 10%;
       --iheightdec: 0.1;
+      --iwidthdec: 0.05;
+      --fntsz: 0.015;
     }
 
     img {
@@ -35,7 +37,7 @@
       height: var(--iheight);
       /*white-space: nowrap;
       font-size: 0;*/
-      background-color: cyan;
+      background-color: #03f0fc;
       width: calc(100% - var(--iwidth));
     }
 
@@ -43,27 +45,34 @@
       display: inline-block;
       /* Height does not include padding, margins, etc. */
       /* Height of child elements is with reference to parent height */
-      background-color: green;
       height: 100%;
     }
 
     li a:hover {
-      background-color: #34e5eb;
+      background-color: #26b2b9b6;
     }
 
     li a {
+      /* Force conversion to pixels */
+      --pad: calc(0.25 * var(--iwidthdec) * 100vw - 0px);
+
       text-decoration: none;
       color: white;
+
+      /* For vertical and horizontal centering, use table cell */
+      /* Acts like td element */
       text-align: center;
       vertical-align: middle;
-      font-family: Arial, Helvetica, sans-serif;
       display: table-cell;
+
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: calc(var(--fntsz) * 100vw);
+
       /* Force conversion to pixels */
       /* Need pixels because % would be relative to parent container */
       height: calc(var(--iheightdec) * 100vh - 0px);
-      /* Force conversion to pixels */
-      padding-right: 20px;
-      padding-left: 20px;
+      padding-right: var(--pad);
+      padding-left: var(--pad);
       width: 100%;
     }
 
