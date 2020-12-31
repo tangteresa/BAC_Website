@@ -7,128 +7,23 @@
 <head>
   <!-- Shows up in browser tab -->
   <title>
-    Cats
+    Home
   </title>
-  <style>
-    :root {
-      /* em are with respect to current font sizes and recommended! */
-      /* best for scalability */
-      --iwidth: 4em;
-      --iheight: 4em;
-      font-size: 1.2em;
-    }
-
-    .cat {
-      display: block;
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      width: var(--iwidth);
-      height: var(--iheight);
-    }
-
-    .nav {
-      position: fixed;
-      top: 0px;
-      left: var(--iwidth);
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      height: var(--iheight);
-      /*white-space: nowrap;
-      font-size: 0;*/
-      background-color: #03f0fc;
-      width: calc(100% - var(--iwidth));
-    }
-
-    .nav li {
-      display: inline-block;
-      /* Height does not include padding, margins, etc. */
-      /* Height of child elements is with reference to parent height */
-    }
-
-    .nav li a:hover {
-      background-color: #26b2b9b6;
-    }
-
-    .nav li a {
-      /* Force conversion to pixels */
-      --pad: calc(0.25 * var(--iwidth));
-
-      text-decoration: none;
-      color: white;
-
-      /* For vertical and horizontal centering, use table cell */
-      /* Acts like td element */
-      text-align: center;
-      vertical-align: middle;
-      display: table-cell;
-
-      font-family: Arial, Helvetica, sans-serif;
-      /* Changing em of an element means em will mean different value */
-      /*font-size: 1.5em;*/
-
-      /* Force conversion to pixels */
-      /* Need pixels because % would be relative to parent container */
-      /*calc(var(--iheightdec) * 100vh - 0px)*/
-
-      height: var(--iheight);
-      padding-right: var(--pad);
-      padding-left: var(--pad);
-      width: 100%;
-      word-spacing: 0.2em;
-    }
-
-    .nav li a:active {
-      background-color: pink;
-    }
-
-    @media screen and (max-width: 750px) {
-      :root {
-        font-size: 1em;
-        --fntsz: 1;
-        --imgwidth: 6;
-        --imgheight: 6;
-      }
-
-      .cat {
-        height: calc(1em * var(--imgwidth));
-        width: calc(1em * var(--imgwidth));
-        --pxem: calc(var(--fntsz) * 16);
-        position: fixed;
-        top:
-          calc(100vh - var(--pxem) * var(--imgheight) * 1px - var(--pxem) * 2px - 0px);
-        left: calc(100vw * 0.5 - (var(--pxem) * var(--imgwidth) * 0.5px) - 0px);
-      }
-
-      .nav {
-        left: 0px;
-        width: 100%;
-      }
-
-      .nav li {
-        width: 100%;
-        background-color: #03f0fc;
-      }
-
-      .nav li a {
-        width: 100vw;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="all.css">
 </head>
 
 <body>
+  <nav>
+    <img class="cat" src="whitesimscat.png" alt="Sims vet clinic cat">
 
-  <img class="cat" src="whitesimscat.png" alt="Sims vet clinic cat">
-
-  <ul class="nav">
-    <!-- Skip closing tag to remove spaces between inline elements-->
-    <li><a href="index.html">Buddy Adoption Center</a>
-    <li><a href="cats.html">Cats</a>
-    <li><a href="events.html">Events</a>
-    <li><a href="contact.html">Contact</a>
-  </ul>
+    <ul class="nav">
+      <!-- Skip closing tag to remove spaces between inline elements-->
+      <li><a href="index.html">Buddy Adoption Center</a>
+      <li><a href="cats.html">Cats</a>
+      <li><a href="events.html">Events</a>
+      <li><a href="contact.html">Contact</a>
+    </ul>
+  </nav>
 </body>
 
 </html>
