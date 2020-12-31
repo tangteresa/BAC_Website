@@ -87,16 +87,18 @@
       :root {
         font-size: 1em;
         --fntsz: 1;
-        --imgwidth: 4;
-        --imgheight: 4;
+        --imgwidth: 6;
+        --imgheight: 6;
       }
 
       .cat {
+        height: calc(1em * var(--imgwidth));
+        width: calc(1em * var(--imgwidth));
         --pxem: calc(var(--fntsz) * 16);
         position: fixed;
         top:
-          calc(100vh - (var(--pxem) * var(--imgheight)) - var(--pxem) * 2 - 0px);
-        left: calc((100vw - 0px) / 2 - (var(--pxem) * var(--imgwidth) / 2));
+          calc(100vh - var(--pxem) * var(--imgheight) * 1px - var(--pxem) * 2px - 0px);
+        left: calc(100vw * 0.5 - (var(--pxem) * var(--imgwidth) * 0.5px) - 0px);
       }
 
       .nav {
