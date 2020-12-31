@@ -6,7 +6,7 @@
     font-size: 1.2em;
   }
 
-  .cat {
+  #logo {
     display: block;
     position: fixed;
     top: 0px;
@@ -79,7 +79,7 @@
       --imgheight: 6;
     }
 
-    .cat {
+    #logo {
       height: calc(1em * var(--imgwidth));
       width: calc(1em * var(--imgwidth));
       --pxem: calc(var(--fntsz) * 16);
