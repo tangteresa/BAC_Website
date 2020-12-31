@@ -15,8 +15,11 @@
 
   /* Make overall element container relative and inner elements absolute */
   /* DO NOT USE FIXED POSITION as it makes the page not scrollable */
+  /* Note that absolute is relative to nearest positioned ancestor, or
+  relative to viewport (and moveable with scrolling) if no positioned 
+  ancestors */
+  /* Relative is relative to original default position */
   header {
-    position: relative; 
     width: 100%; 
     margin: 0;
     padding: 0; 
@@ -40,6 +43,7 @@
     margin: 0;
     padding: 0;
     height: var(--iheight);
+    /* Possible solution for removing whitespace between elements */
     /*white-space: nowrap;
     font-size: 0;*/
     background-color: #03f0fc;
@@ -99,10 +103,11 @@
 
   .mainContent {
     width: 100%; 
-    position: relative;
+    /* Since there is no positioned ancestor, it is relative to viewport */
+    /* Moves along with page scrolling */
+    position: absolute;
     left: 0px; 
     top: var(--iheight); 
-    background-color: green; 
   }
 
   /* Slideshow items */
@@ -111,12 +116,12 @@
     width: 100%; 
     background-image: url("images/paws.png"); 
     padding-top: 1em; 
-    /*margin-bottom: 200px; */
+    padding-bottom: 1em; 
   }
 
   #slideImg {
     display: block;
-    /*margin: auto;*/
+    margin: auto;
     width: 30em; 
     height: 20em; 
     border-width: 0.5em; 
@@ -190,7 +195,7 @@
       height: calc(1em * var(--imgwidth));
       width: calc(1em * var(--imgwidth));
       --pxem: calc(var(--fntsz) * 16);
-      /*position: relative;*/
+      position: absolute; 
       top:
         calc(100vh - var(--pxem) * var(--imgheight) * 1px - var(--pxem) * 2px - 0px);
       left: calc(100vw * 0.5 - (var(--pxem) * var(--imgwidth) * 0.5px) - 0px);
