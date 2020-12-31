@@ -69,10 +69,96 @@
 
   .nav li a:active {
     background-color: pink;
+    opacity: 0.75; 
   }
 
-  .maincontent {
-    background-color: green; 
+  #welcome {
+    font-family: Arial, Helvetica, sans-serif; 
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 2em; 
+    color: #777f8c; 
+  }
+
+  .mainContent {
+    width: 100%;
+    position: fixed;
+    left: 0px; 
+    top: var(--iheight); 
+    padding-bottom: 100px; 
+  }
+
+  /* Slideshow items */
+  .slideshow {
+    justify-content: center; 
+    width: 100%; 
+    background-image: url("images/paws.png"); 
+    padding-top: 1em; 
+  }
+
+  #slideImg {
+    display: block;
+    margin: auto;
+    width: 30em; 
+    height: 20em; 
+    border-width: 0.5em; 
+    border-style: solid; 
+    border-color: white; 
+  }
+
+  .slideshowImgContainer {
+    margin-right: auto;
+    margin-left: auto; 
+    justify-content: center; 
+    width: 34em; 
+    background-color: #03f0fc; 
+    opacity: 0.75; 
+    padding-top: 0.5em;
+    padding-bottom: 2em; 
+    border-radius: 0.5em;
+  }
+
+  .slideshowBtnContainer{
+    /* How to center with flexbox */
+    display: flex; 
+    justify-content: center; 
+    margin-top: 1em; 
+    margin-bottom: 1em; 
+  }
+
+  .slideshowBtn {
+    --pad: calc(0.25 * var(--iwidth)); 
+    --tbpad: calc(0.125 * var(--iwidth));
+    background-color: pink; 
+    opacity: 0.75; 
+    border-style: solid; 
+    border-color: white; 
+    padding: var(--tbpad) var(--pad); 
+    border-radius: 0.5em;
+  }
+
+  .slideshowBtn a {
+    text-decoration: none; 
+    font-weight: bold; 
+    color: white; 
+
+    /* Center text for a element */
+    text-align: center; 
+    display: table-cell;
+    vertical-align: middle; 
+  }
+
+  #spacer {
+    border-style: none; 
+    background-color: transparent; 
+  }
+
+  #about { 
+    font-size: 2em; 
+    color: black; 
+    position: fixed; 
+    top: 40em; 
+    text-align: center; 
   }
 
   @media screen and (max-width: 750px) {
