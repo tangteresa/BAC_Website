@@ -71,6 +71,10 @@
     background-color: pink;
   }
 
+  .maincontent {
+    background-color: green; 
+  }
+
   @media screen and (max-width: 750px) {
     :root {
       font-size: 1em;
