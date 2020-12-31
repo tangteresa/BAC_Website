@@ -18,7 +18,7 @@
       font-size: 1.2em;
     }
 
-    img {
+    .cat {
       display: block;
       position: fixed;
       top: 0px;
@@ -27,7 +27,7 @@
       height: var(--iheight);
     }
 
-    ul {
+    .nav {
       position: fixed;
       top: 0px;
       left: var(--iwidth);
@@ -41,18 +41,18 @@
       width: calc(100% - var(--iwidth));
     }
 
-    li {
+    .nav li {
       display: inline-block;
       /* Height does not include padding, margins, etc. */
       /* Height of child elements is with reference to parent height */
       height: var(--iheight);
     }
 
-    li a:hover {
+    .nav li a:hover {
       background-color: #26b2b9b6;
     }
 
-    li a {
+    .nav li a {
       /* Force conversion to pixels */
       --pad: calc(0.25 * var(--iwidth));
 
@@ -79,15 +79,38 @@
       width: 100%;
     }
 
-    li a:active {
+    .nav li a:active {
       background-color: pink;
     }
 
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 750px) {
       :root {
-        --iwidth: 4em;
-        --iheight: 4em;
         font-size: 1em;
+        --fntsz: 1;
+        --imgwidth: 4;
+        --imgheight: 4;
+      }
+
+      .cat {
+        --pxem: calc(var(--fntsz) * 16);
+        position: fixed;
+        top:
+          calc(100vh - (var(--pxem) * var(--imgheight)) - var(--pxem) * 2 - 0px);
+        left: calc((100vw - 0px) / 2 - (var(--pxem) * var(--imgwidth) / 2));
+      }
+
+      .nav {
+        left: 0px;
+        width: 100%;
+      }
+
+      .nav li {
+        width: 100%;
+        background-color: #03f0fc;
+      }
+
+      .nav li a {
+        width: 100vw;
       }
     }
   </style>
@@ -95,9 +118,9 @@
 
 <body>
 
-  <img src="whitesimscat.png" alt="Sims vet clinic cat">
+  <img class="cat" src="whitesimscat.png" alt="Sims vet clinic cat">
 
-  <ul>
+  <ul class="nav">
     <!-- Skip closing tag to remove spaces between inline elements-->
     <li><a href="index.html">Home</a>
     <li><a href="cats.html">Cats</a>
