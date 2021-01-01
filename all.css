@@ -1,3 +1,5 @@
+  /* Computer screen */
+
   :root {
     /* em are with respect to current font sizes and recommended! */
     /* best for scalability */
@@ -116,7 +118,7 @@
     justify-content: center; 
     width: 100%; 
     padding-top: 2em; 
-    padding-bottom: 1em; 
+    padding-bottom: 0.5em; 
   }
 
   #slideImg {
@@ -133,11 +135,11 @@
     margin-right: auto;
     margin-left: auto; 
     justify-content: center; 
-    width: 34em; 
+    width: 40em; 
     background-color: #03f0fc; 
     opacity: 0.75; 
     padding-top: 0.5em;
-    padding-bottom: 1em; 
+    padding-bottom: 3em; 
     border-radius: 0.5em;
   }
 
@@ -145,13 +147,13 @@
     /* How to center with flexbox */
     display: flex; 
     justify-content: center; 
-    margin-top: 1em; 
+    margin-top: 1.2em; 
     margin-bottom: 1em; 
   }
 
   .slideshowBtn {
-    --pad: calc(0.25 * var(--iwidth)); 
-    --tbpad: calc(0.125 * var(--iwidth));
+    --pad: calc(0.5 * var(--iwidth)); 
+    --tbpad: calc(0.25 * var(--iwidth));
     background-color: pink; 
     opacity: 0.75; 
     border-style: solid; 
@@ -159,6 +161,8 @@
     padding: var(--tbpad) var(--pad); 
     border-radius: 0.5em;
     color: white; 
+    font-weight: bold; 
+    font-size: 1em; 
   }
 
   .slideshowBtn:hover{
@@ -201,6 +205,9 @@
     padding-right: 8em;
     padding-left: 8em; 
     margin-top: 0px; 
+
+    display: flex; 
+    justify-content: center; 
   }
 
   #heart-top{
@@ -209,7 +216,7 @@
     width: 4em;
     height: 4em; 
     top: -1.2em; 
-    transform: rotate(5deg); 
+    transform: rotate(6deg); 
   }
 
   #heart-bottom{
@@ -230,7 +237,16 @@
     transform: rotate(5deg); 
   }
 
-  @media screen and (max-width: 750px) {
+  /* Tablet */
+  @media screen and (min-width: 450px) and (max-width: 900px) {
+  .nav li {
+      width: 100%;
+      background-color: #03f0fc;
+    }
+  }
+
+  /* Mobile phone */
+  @media screen and (max-width: 450px) {
     :root {
       font-size: 1em;
       --fntsz: 1;
