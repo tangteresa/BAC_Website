@@ -8,7 +8,6 @@ $(document).ready(function () {
   ];
 
   var currIdx = 0;
-  var newSrc = "images/sign.png";
 
   $("#nxt").click(function () {
     if (currIdx == images.length - 1) {
@@ -16,8 +15,7 @@ $(document).ready(function () {
     } else {
       currIdx = currIdx + 1;
     }
-    newSrc = images[currIdx];
-    $("#slideImg").attr('src', newSrc);
+    $("#slideImg").attr('src', images[currIdx]);
   });
 
   $("#prev").click(function () {
@@ -26,8 +24,7 @@ $(document).ready(function () {
     } else {
       currIdx = currIdx - 1;
     }
-    newSrc = images[currIdx];
-    $("#slideImg").attr('src', newSrc);
+    $("#slideImg").attr('src', images[currIdx]);
   });
 
 }); 
