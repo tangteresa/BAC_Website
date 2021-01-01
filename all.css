@@ -106,7 +106,7 @@
     opacity: 0.75; 
   }
 
-  #welcome {
+  .heading {
     font-family: Arial, Helvetica, sans-serif; 
     text-align: center; 
     font-weight: bold; 
@@ -211,7 +211,7 @@
   .blurbContainer{
     position: relative; 
     padding-top: 0px;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
     padding-right: 8em;
     padding-left: 8em; 
     margin-top: 0px; 
@@ -234,7 +234,7 @@
     left: 6em; 
     width: 4em;
     height: 4em; 
-    bottom: 0.75em; 
+    bottom: 0.15em; 
     transform: rotate(-10deg); 
   }
 
@@ -243,18 +243,17 @@
     left: 11em; 
     width: 2em;
     height: 2em; 
-    bottom: 1em; 
+    bottom: 0.35em; 
     transform: rotate(5deg); 
   }
 
   /* Employees */
 
   .employees {
-    border-style: solid; 
-    border-color: var(--gra); 
-    border-width: 0.5em; 
-    margin: 1.5em 8em; 
-    padding: 1em; 
+    margin-top: 0px; 
+    margin-bottom: 1em;
+    margin-right: 8em;
+    margin-left: 8em; 
   }
 
   .employee {
