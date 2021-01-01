@@ -115,7 +115,7 @@
   .slideshow {
     justify-content: center; 
     width: 100%; 
-    padding-top: 1em; 
+    padding-top: 2em; 
     padding-bottom: 1em; 
   }
 
@@ -190,9 +190,44 @@
 
   .blurb {
     background-color: white; 
-    margin: 0.5em 8em; 
     padding: 1em 1em; 
     border-radius: 0.5em; 
+  }
+
+  .blurbContainer{
+    position: relative; 
+    padding-top: 0px;
+    padding-bottom: 2em;
+    padding-right: 8em;
+    padding-left: 8em; 
+    margin-top: 0px; 
+  }
+
+  #heart-top{
+    position: absolute; 
+    right: 7em; 
+    width: 4em;
+    height: 4em; 
+    top: -1.2em; 
+    transform: rotate(5deg); 
+  }
+
+  #heart-bottom{
+    position: absolute; 
+    left: 6em; 
+    width: 4em;
+    height: 4em; 
+    bottom: 0.75em; 
+    transform: rotate(-10deg); 
+  }
+
+  #heart-small{
+    position: absolute; 
+    left: 11em; 
+    width: 2em;
+    height: 2em; 
+    bottom: 1em; 
+    transform: rotate(5deg); 
   }
 
   @media screen and (max-width: 750px) {
