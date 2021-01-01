@@ -1,5 +1,14 @@
   /* Computer screen */
 
+  /* Scaling options: 
+    -pixels (not recommended, varies with device)
+    - em (based on font size; think of it as still absolute, as
+    long as font size stays constant) 
+    - vh and vw (with regard to viewport, very scalable!) 
+
+    Margins and padding are your best friends! 
+  */
+
   :root {
     /* em are with respect to current font sizes and recommended! */
     /* best for scalability */
@@ -124,18 +133,17 @@
   #slideImg {
     display: block;
     margin: auto;
-    width: 30em; 
-    height: 20em; 
+    height: 60vh; 
+    width: 50vw; 
     border-width: 0.5em; 
     border-style: solid; 
     border-color: white; 
   }
 
   .slideshowImgContainer {
-    margin-right: auto;
-    margin-left: auto; 
+    margin-right: 8em;
+    margin-left: 8em; 
     justify-content: center; 
-    width: 40em; 
     background-color: #03f0fc; 
     opacity: 0.75; 
     padding-top: 0.5em;
