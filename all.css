@@ -158,17 +158,22 @@
     border-color: white; 
     padding: var(--tbpad) var(--pad); 
     border-radius: 0.5em;
+    color: white; 
   }
 
-  .slideshowBtn a {
-    text-decoration: none; 
-    font-weight: bold; 
-    color: white; 
+  .slideshowBtn:hover{
+    border-color: pink; 
+    border-style: solid;
+  }
 
-    /* Center text for a element */
-    text-align: center; 
-    display: table-cell;
-    vertical-align: middle; 
+  .slideshowBtn:focus {
+    outline: 0 !important; 
+  }
+
+  .slideshowBtn:active {
+    outline: 0 !important; 
+    border-color: #03f0fc; 
+    border-style: solid; 
   }
 
   #spacer {
