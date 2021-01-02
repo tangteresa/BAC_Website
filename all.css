@@ -24,6 +24,14 @@
   body {
     margin: 0;
     padding: 0; 
+
+    /* For solving issue of forcing footer to bottom of page content 
+    Flex: 1 for main content div, but not header and footer; those will
+    automatically sandwich main content...then add margin to force main content
+    below header */ 
+    display: flex; 
+    min-height: 100vh; 
+    flex-direction: column; 
   }
 
   /* Make overall element container relative and inner elements absolute */
@@ -36,7 +44,6 @@
     width: 100%; 
     margin: 0;
     padding: 0; 
-    background-color: red; 
   }
 
   #logo {
@@ -102,8 +109,7 @@
   }
 
   .nav li a:active {
-    background-color: pink;
-    opacity: 0.75; 
+    background-color: pink; 
   }
 
   .heading {
@@ -115,12 +121,14 @@
   }
 
   .mainContent {
+    flex: 1; 
     width: 100%; 
     /* Since there is no positioned ancestor, it is relative to viewport */
     /* Moves along with page scrolling */
-    position: absolute;
+    /*position: absolute;
     left: 0px; 
-    top: var(--iheight); 
+    top: var(--iheight); */
+    margin-top: var(--iheight); 
     background-image: url("images/paws.png"); 
   }
 
@@ -282,6 +290,31 @@
     color: #63686e; 
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif; 
+  }
+
+  /* Footer */
+  footer {
+    background-color: red; 
+    width: 100%; 
+   /* display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
+    padding: 1em; */
+   /* height: 20%;
+    position: absolute; 
+    bottom: 0px;  */
+  }
+
+  .icon {
+    height: 2em; 
+    width: 2em; 
+  }
+
+  #copyright {
+    font-size: 1em; 
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center; 
   }
 
   /* Tablet */
