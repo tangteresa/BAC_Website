@@ -10,6 +10,10 @@
     Contact
   </title>
   <link rel="stylesheet" href="all.css">
+
+  <!-- Scripts -->
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="form.js"></script>
 </head>
 
 <body>
@@ -45,36 +49,69 @@
 
     <form id="Form" action="submit.php">
       <p class="heading">Contact Form</p>
-      <label for="fname">First name: </label>
-      <input type="text" id="fname" name="fname"><br>
-      <label for="lname">Last name: </label>
-      <input type="text" id="lname" name="lname"><br>
-      <label for="email">Email: </label>
-      <input type="email" id="email" name="email"><br>
-      <label for="phone">Phone number(xxx-xxx-xxxx): </label>
-      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+      <div class="textseries">
+        <div class="pair">
+          <label for="fname">First name: </label>
+          <input type="text" id="fname" name="fname" required>
+        </div>
+        <br>
+        <div class="pair">
+          <label for="lname">Last name: </label>
+          <input type="text" id="lname" name="lname" required>
+        </div>
+        <br>
+        <div class="pair">
+          <label for="email">Email: </label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        <div class="pair">
+          <label for="phone">Phone number: </label>
+          <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            required>
+        </div>
+      </div>
 
       <p class="descr">Select the reason for your inquiry: </p><br>
-      <input type="radio" id="adoption" name="adopt" value="forAdoption">
-      <label for="adoption">I want to adopt a cat</label>
-      <input type="radio" id="alternative" name="other" value="forOther">
-      <label for="alternative">Other</label>
+      <div id="radios">
+        <input type="radio" id="adoption" name="radioBtn" value="A" required>
+        <label for="adoption">I want to adopt a cat</label>
+        <input type="radio" id="alternative" name="radioBtn" value="O">
+        <label for="alternative">Other</label>
+      </div>
+
+      <!-- <input type="submit" value="Continue"> -->
 
       <div id="adoptForm">
-        <label for="catid">Cat ID: </label>
-        <input type="text" id="catid" name="catid"><br>
+        <div class="pair">
+          <label for="catid">6-digit cat ID: </label>
+          <input type="number" id="catid" name="catid" min="000001" max="999999" required><br>
+        </div>
         <p class="descr">We will contact you to schedule an interview.
           Please select two times below that match your availability: </p><br>
 
-        <label for="date1">Date 1: </label>
-        <input type="date" id="date1" name="date1"><br>
-        <label for="time1">Select a time for date 1: </label>
-        <input type="time" id="time1" name="time1"><br>
+        <div class="textseries">
+          <div class="pair">
+            <label for="date1">Date 1: </label>
+            <input type="date" id="date1" name="date1">
+          </div>
+          <br>
+          <div class="pair">
+            <label for="time1">Select a time for date 1: </label>
+            <input type="time" id="time1" name="time1">
+          </div>
+          <br>
 
-        <label for="date2">Date 2: </label>
-        <input type="date" id="date2" name="date2"><br>
-        <label for="time2">Select a time for date 2: </label>
-        <input type="time" id="time2" name="time2"><br>
+          <div class="pair">
+            <label for="date2">Date 2: </label>
+            <input type="date" id="date2" name="date2">
+          </div>
+          <br>
+          <div class="pair">
+            <label for="time2">Select a time for date 2: </label>
+            <input type="time" id="time2" name="time2">
+          </div>
+        </div>
       </div>
 
       <div id="otherForm">
@@ -82,7 +119,7 @@
         <input type="text" id="otherDescr" name="otherDescr"><br>
       </div>
 
-      <input type="submit" value="Submit">
+      <input id="submit" type="submit" value="Submit">
     </form>
 
   </div>
