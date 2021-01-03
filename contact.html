@@ -47,6 +47,11 @@
       </div>
     </div>
 
+    <!-- NOTE: while HTML elements have automatic validation (it appears), forms
+    can also be validated with JQuery (automatic methods, or pattern matching, 
+    etc.) before submission 
+    To prevent submission, return false in callback function called when
+    event for on method is 'submit'-->
     <form id="Form" action="submit.php">
       <p class="heading">Contact Form</p>
       <div class="textseries">
@@ -80,8 +85,6 @@
         <label for="alternative">Other</label>
       </div>
 
-      <!-- <input type="submit" value="Continue"> -->
-
       <div id="adoptForm">
         <div class="textseries">
           <div class="pair">
@@ -95,30 +98,30 @@
         <div class="textseries">
           <div class="pair">
             <label for="date1">Date 1: </label>
-            <input type="date" id="date1" name="date1">
+            <input type="date" id="date1" name="date1" required>
           </div>
           <br>
           <div class="pair">
             <label for="time1">Select a time for date 1: </label>
-            <input type="time" id="time1" name="time1">
+            <input type="time" id="time1" name="time1" required>
           </div>
           <br>
 
           <div class="pair">
             <label for="date2">Date 2: </label>
-            <input type="date" id="date2" name="date2">
+            <input type="date" id="date2" name="date2" required>
           </div>
           <br>
           <div class="pair">
             <label for="time2">Select a time for date 2: </label>
-            <input type="time" id="time2" name="time2">
+            <input type="time" id="time2" name="time2" required>
           </div>
         </div>
       </div>
 
       <div id="otherForm">
         <p class="descr"><b>Detail your inquiry below: </b></p>
-        <textarea id="otherDescr" name="otherDescr"></textarea>
+        <textarea id="otherDescr" name="otherDescr" required></textarea>
       </div>
 
       <input id="submit" type="submit" value="Submit">
