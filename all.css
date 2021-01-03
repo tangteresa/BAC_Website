@@ -204,7 +204,7 @@
     background-color: transparent; 
   }
 
-  #about { 
+  .blurbtext { 
     font-size: 1.5em; 
     color: #63686e; 
     text-align: center; 
@@ -221,12 +221,16 @@
     position: relative; 
     padding-top: 0px;
     padding-bottom: 1em;
+
+    /* Ensures width is always same so hearts or icons stay in proper place */
     padding-right: 8em;
     padding-left: 8em; 
+
     margin-top: 0px; 
 
     display: flex; 
     justify-content: center; 
+    flex-direction: column; 
   }
 
   #heart-top{
@@ -320,6 +324,16 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center; 
     margin-top: 0; 
+  }
+
+  /* Contact page */
+
+  #climb {
+    position: absolute; 
+    height: 9em;
+    width: 9em; 
+    right: 5em; 
+    top: 4.5em; 
   }
 
   /* Tablet */
