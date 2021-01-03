@@ -42,6 +42,49 @@
         </p>
       </div>
     </div>
+
+    <form id="Form" action="submit.php">
+      <p class="heading">Contact Form</p>
+      <label for="fname">First name: </label>
+      <input type="text" id="fname" name="fname"><br>
+      <label for="lname">Last name: </label>
+      <input type="text" id="lname" name="lname"><br>
+      <label for="email">Email: </label>
+      <input type="email" id="email" name="email"><br>
+      <label for="phone">Phone number(xxx-xxx-xxxx): </label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+
+      <p class="descr">Select the reason for your inquiry: </p><br>
+      <input type="radio" id="adoption" name="adopt" value="forAdoption">
+      <label for="adoption">I want to adopt a cat</label>
+      <input type="radio" id="alternative" name="other" value="forOther">
+      <label for="alternative">Other</label>
+
+      <div id="adoptForm">
+        <label for="catid">Cat ID: </label>
+        <input type="text" id="catid" name="catid"><br>
+        <p class="descr">We will contact you to schedule an interview.
+          Please select two times below that match your availability: </p><br>
+
+        <label for="date1">Date 1: </label>
+        <input type="date" id="date1" name="date1"><br>
+        <label for="time1">Select a time for date 1: </label>
+        <input type="time" id="time1" name="time1"><br>
+
+        <label for="date2">Date 2: </label>
+        <input type="date" id="date2" name="date2"><br>
+        <label for="time2">Select a time for date 2: </label>
+        <input type="time" id="time2" name="time2"><br>
+      </div>
+
+      <div id="otherForm">
+        <p class="descr">Detail your inquiry below: </p><br>
+        <input type="text" id="otherDescr" name="otherDescr"><br>
+      </div>
+
+      <input type="submit" value="Submit">
+    </form>
+
   </div>
 
   <footer>
