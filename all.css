@@ -347,6 +347,7 @@
     padding: 1.5em; 
     border-radius: 0.5em;
     margin-top: 1.5em; 
+    margin-bottom: 2em; 
   }
 
   label {
@@ -363,18 +364,21 @@
   }
 
   .pair input {
-    width: 50%; 
+    width: 60%;
   }
 
   .textseries {
     display: inline-flex; 
     flex-direction: column; 
-    width: 80%; 
+    width: 75%; 
+    margin-bottom: 1em; 
+    margin-top: 0.5em; 
   }
 
   #radios {
     display: flex;
     justify-content: center; 
+    margin-bottom: 1.5em; 
   }
 
   #adoptForm {
@@ -390,7 +394,28 @@
   }
 
   #submit {
-    margin-top: 1em; 
+    margin-top: 1.5em; 
+    width: 30%; 
+    padding: 0.85em; 
+    background-color: pink;
+    border-style: solid;
+    border-color: white;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em; 
+    margin-right: auto;
+    margin-left: auto; 
+  }
+
+  #otherDescr {
+    margin-top: 0; 
+    width: 75%;
+    height: 20vh; 
+
+    /* If adding width to justify content obj causes it
+    to go off center, add margin-right and left auto to recenter */
+    margin-right: auto;
+    margin-left: auto; 
   }
 
 
