@@ -137,6 +137,12 @@
   }
 
   /* Slideshow items */
+  
+  #welcContainer {
+    padding-right: 1em;
+    padding-left: 1em; 
+  }
+
   .slideshow {
     justify-content: center; 
     width: 100%; 
