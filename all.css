@@ -19,7 +19,7 @@
 
     /* Doesn't transfer opacity to child elements */ 
     --bluo: rgb(3, 240, 252, 0.75); 
-    --gra: #63686e; 
+    --gra: #848588; 
   }
 
   /* Remove weird white space around entire white space */
@@ -120,7 +120,7 @@
     text-align: center; 
     font-weight: bold; 
     font-size: 2em; 
-    color: #63686e; 
+    color: var(--gra); 
   }
 
   .mainContent {
@@ -208,7 +208,7 @@
 
   .blurbtext { 
     font-size: 1.5em; 
-    color: #63686e; 
+    color: var(--gra);
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif; 
   }
@@ -293,7 +293,7 @@
 
   .descr { 
     font-size: 1em; 
-    color: #63686e; 
+    color: var(--gra);
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif; 
   }
@@ -353,7 +353,7 @@
   label {
     padding-right: 0.5em; 
     font-size: 1em; 
-    color: #63686e; 
+    color: var(--gra);
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif; 
   }
@@ -464,6 +464,8 @@
     text-align: center; 
     border-style: hidden; 
     z-index: 3; 
+    padding: 0.5em; 
+    box-sizing: border-box; 
   }
 
   .drop:focus {
