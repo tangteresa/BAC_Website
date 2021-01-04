@@ -241,16 +241,16 @@
     flex-direction: column; 
   }
 
-  #heart-top{
+  .icon-top{
     position: absolute; 
     right: 7em; 
     width: 4em;
     height: 4em; 
-    top: -1.2em; 
+    top: -1.75em; 
     transform: rotate(6deg); 
   }
 
-  #heart-bottom{
+  .icon-bottom{
     position: absolute; 
     left: 6em; 
     width: 4em;
@@ -259,7 +259,7 @@
     transform: rotate(-10deg); 
   }
 
-  #heart-small{
+  .icon-small{
     position: absolute; 
     left: 11em; 
     width: 2em;
