@@ -73,7 +73,8 @@
         <div class="pair">
           <label for="phone">Phone number: </label>
           <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            required>
+            oninvalid="setCustomValidity('Phone number format must be xxx-xxx-xxxx')"
+            onchange="try{setCustomValidity('')}catch(e){}" required>
         </div>
       </div>
 
@@ -89,11 +90,13 @@
         <div class="textseries">
           <div class="pair">
             <label for="catid">6-digit cat ID: </label>
-            <input type="number" id="catid" name="catid" min="000001" max="999999" required><br>
+            <input type="text" id="catid" name="catid" maxlength="6" min="0" max="999999" placeholder="xxxxxx"
+              pattern="[0-9]{6}" oninvalid="setCustomValidity('Cat ID must be 6 digits')"
+              onchange="try{setCustomValidity('')}catch(e){}" required><br>
           </div>
         </div>
         <p class="descr"><b>We will contact you to schedule an interview.
-            Please select two times below that match your availability: </b></p><br>
+            Please select two times below that match your availability (specify AM or PM): </b></p><br>
 
         <div class="textseries">
           <div class="pair">
