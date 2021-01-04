@@ -16,6 +16,9 @@
     --iheight: 4em;
     font-size: 1.2em;
     --blu:  #03f0fc; 
+
+    /* Doesn't transfer opacity to child elements */ 
+    --bluo: rgb(3, 240, 252, 0.75); 
     --gra: #63686e; 
   }
 
@@ -66,7 +69,7 @@
     /* Possible solution for removing whitespace between elements */
     /*white-space: nowrap;
     font-size: 0;*/
-    background-color: #03f0fc;
+    background-color: var(--blu);
     width: calc(100% - var(--iwidth));
   }
 
@@ -155,8 +158,7 @@
     margin-right: 8em;
     margin-left: 8em; 
     justify-content: center; 
-    background-color: #03f0fc; 
-    opacity: 0.75; 
+    background-color: var(--bluo); 
     padding-top: 0.5em;
     padding-bottom: 3em; 
     border-radius: 0.5em;
@@ -195,7 +197,7 @@
 
   .slideshowBtn:active {
     outline: 0 !important; 
-    border-color: #03f0fc; 
+    border-color: var(--blu); 
     border-style: solid; 
   }
 
@@ -270,10 +272,9 @@
   }
 
   .employee {
-    background-color: var(--blu); 
+    background-color: var(--bluo); 
     padding: 1em 1em; 
     border-radius: 0.5em; 
-    opacity: 0.75; 
     margin: 1em 10vw; 
     justify-content: center; 
     display: flex;
@@ -340,8 +341,7 @@
     display: flex;
     justify-content: center; 
     flex-direction: column; 
-    background-color: var(--blu);
-    opacity: 0.75; 
+    background-color: var(--bluo);
     margin-right: 8em;
     margin-left: 8em;
     padding: 1.5em; 
@@ -418,12 +418,81 @@
     margin-left: auto; 
   }
 
+  /* Cats page */
+
+  .cats {
+    margin-right: 8em;
+    margin-left: 8em; 
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .catContainer {
+    padding-top: 1.5em; 
+    padding-bottom: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    border-radius: 0.5em;
+    background-color: var(--bluo); 
+    width: 35vw; 
+  }
+
+  .catimg {
+    border-width: 0.5em; 
+    border-style: solid; 
+    border-color: white; 
+    margin-right: auto;
+    margin-left: auto; 
+
+    /* Auto resize */
+    width: 80%;
+    height: auto; 
+  }
+
+  .txtContainer {
+    padding-right: 0.5em;
+    padding-left: 0.5em; 
+  }
+
+  .drop {
+    background-color: pink;
+    border-radius: 0 0 0.5em 0.5em; 
+    color: white; 
+    font-size: 1em; 
+    text-align: center; 
+    border-style: hidden; 
+    z-index: 3; 
+  }
+
+  .drop:focus {
+    outline: 0
+  }
+
+  .dropdownContent {
+    background-color: white; 
+    /* Same width as catContainer */
+    width: 35vw; 
+    position: relative; 
+    top: -0.5em; 
+    padding: 1em; 
+
+    /* Elements with opacity less than 1 are rendered before/behind those
+    with z-indices if they are in the same stacking context */
+    /* Stacking contexts are created from top to bottom (i.e. a parent and its
+    children are in the same stacking context) */ 
+    z-index: 2; 
+    /* Account for padding in width */
+    box-sizing: border-box;
+    margin-bottom: 0
+  }
 
   /* Tablet */
   @media screen and (min-width: 450px) and (max-width: 900px) {
   .nav li {
       width: 100%;
-      background-color: #03f0fc;
+      background-color: var(--blu);
     }
   }
 
@@ -453,7 +522,7 @@
 
     .nav li {
       width: 100%;
-      background-color: #03f0fc;
+      background-color: var(--blu);
     }
 
     .nav li a {

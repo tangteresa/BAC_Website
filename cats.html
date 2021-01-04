@@ -10,6 +10,9 @@
     Cats
   </title>
   <link rel="stylesheet" href="all.css">
+
+  <script src="jquery-3.5.1.min.js"></script>
+  <script src="dropdown.js"></script>
 </head>
 
 <body>
@@ -32,13 +35,17 @@
   <div class="mainContent">
     <p class="heading">Find your furry friend!</p>
     <div class="cats">
-      <div class="catContainer">
-        <img src="images/taco.png" alt="Taco cat">
-        <p class="descr"><b>Tortilla</b><br><br>CatID: 113268<br>Gender: Male
-          <br>Age: 9 months<br>Breed: American shorthair tuxedo
-        </p>
-        <button class="drop">About me<i class="fa fa-caret-down"></i></button>
-        <div class="dropdownContent">
+      <div class="catDropdown">
+        <div class="catContainer">
+          <img class="catimg" src="images/taco.png" alt="Taco cat">
+          <div class="txtContainer">
+            <p class="descr"><b>Tortilla</b><br><br>CatID: 113268<br>Gender: Male
+              <br>Age: 9 months<br>Breed: American shorthair tuxedo
+            </p>
+          </div>
+          <button id="1" class="drop">About me<i class="fa fa-caret-down"></i></button>
+        </div>
+        <div id="d1" class="dropdownContent">
           <p class="descr">
             I am a laidback kitty who loves toasting in the sun or purring on
             your lap. I tend to feel cold, so my taco suit keeps me nice and
