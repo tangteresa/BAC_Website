@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var highest = 1;
+  var highest = 6;
 
   for (i = 1; i <= highest; i++) {
     $("#d" + i).hide();
