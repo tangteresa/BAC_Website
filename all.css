@@ -520,14 +520,31 @@
 
   /* Tablet */
   @media screen and (min-width: 450px) and (max-width: 900px) {
-  .nav li {
+    .nav {
+      background-color: green; 
+    }
+    
+    .nav li {
       width: 100%;
       background-color: var(--blu);
+    }
+
+    .nav li a {
+      width: 100%; 
+      padding-right: 0;
+      padding-left: 0; 
     }
   
     .hamburg {
       display: inline;  
       background-color: orange; 
+      height: var(--iheight); 
+    }
+
+    .links {
+      position: absolute; 
+      top: var(--iheight); 
+      background-color: purple; 
     }
   
   }
