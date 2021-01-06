@@ -269,7 +269,7 @@
 
   .icon-bottom{
     position: absolute; 
-    left: calc(var(--marg) - 2em); ; 
+    left: calc(var(--marg) - 2em);  
     width: 4em;
     height: 4em; 
     bottom: 0.15em; 
@@ -326,6 +326,7 @@
     background-color: var(--blu); 
     width: 100%; 
     padding: 0.25em; 
+    box-sizing: border-box; 
     display: flex; 
     justify-content: center; 
     flex-direction: column; 
@@ -566,7 +567,7 @@
       height: var(--iheight); 
     }
 
-    .hamburg:hover {
+    .hamburg:active {
       background-color: var(--hov); 
     }
 
@@ -586,6 +587,14 @@
       width: 60%;
       height: auto; 
     }
+
+    .catContainer { 
+      width: 50vw; 
+    }
+    
+    .dropdownContent {
+      width: 50vw; 
+    }
   
   }
 
@@ -596,5 +605,74 @@
       --marg: 2em; 
     }
 
-    /* TO DO */
+    .catContainer { 
+      width: 60vw; 
+    }
+    
+    .dropdownContent {
+      width: 60vw; 
+    }
+
+    .hamburg {
+      display: flex; 
+      height: var(--iheight); 
+    }
+
+    #logo {
+      z-index: 11; 
+    }
+
+    .nav {
+      width: 100%; 
+      left: 0; 
+      z-index: 10; 
+    }
+    
+    .nav li {
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      width: 100%;
+    }
+
+    .nav li a {
+      width: 100%; 
+      padding-right: 0;
+      padding-left: 0; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+    }
+
+    .hamburg:active {
+      background-color: var(--hov); 
+    }
+
+    .links {
+      width: 100%; 
+      position: absolute; 
+      top: var(--iheight); 
+      background-color: var(--blu); 
+      box-shadow: 0 0.3em 20px -10px; 
+    }
+
+    .icon-top {
+      height: 3em; 
+      width: 3em; 
+    }
+
+    .icon-bottom {
+      height: 3em; 
+      width: 3em; 
+      left: 1.3em;  
+    }
+
+    #slideImg {
+      height: 35vh; 
+    }
+
+    .headshot {
+      width: 50%;
+      height: auto; 
+    }
   }

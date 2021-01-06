@@ -19,5 +19,10 @@ $(document).ready(function () {
 
   $(".hamburg").on('click', function () {
     $(".links").toggle();
+    if ($(".links").is(":hidden")) {
+      $(".hamburg").css('background-color', "#03f0fc");
+    } else {
+      $(".hamburg").css('background-color', "#26b2b9b6");
+    }
   });
 });
