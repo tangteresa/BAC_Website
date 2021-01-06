@@ -434,6 +434,16 @@
     margin-left: auto; 
   }
 
+  #submit:active {
+    outline: 0; 
+    background-color: rgb(250, 166, 180); 
+  }
+
+  #submit:focus {
+    outline: 0; 
+  }
+
+
   #otherDescr {
     margin-top: 0; 
     width: 75%;

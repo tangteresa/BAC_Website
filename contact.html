@@ -14,8 +14,42 @@
   <!-- Scripts -->
   <script src="jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="form.js"></script>
-  <script src="menu.js"></script>
+  <script type="text/javascript" src="form.js"></script>
+  <script type="text/javascript" src="menu.js"></script>
+
+  <script>
+    // For some reason this has to be included for onsubmit to recognize it 
+    var valid = true;
+
+    function required(item, idx) {
+      if ($("#" + item).val() == "") {
+        valid = valid && false;
+      }
+    }
+
+    function validation() {
+      valid = true;
+      var form_type = $('input[type=radio]:checked', '#Form').val();
+      var adopt = ["catid", "date1", "date2", "time1", "time2"];
+      var general = ["fname", "lname", "email", "phone", "radioBtn"];
+
+      general.forEach(required);
+
+      if (form_type == "A") {
+        adopt.forEach(required);
+      } else if (form_type == "O") {
+        required("otherDescr", 0);
+      } else {
+        valid = false;
+      }
+
+      if (!valid) {
+        window.alert("Please fill in all fields before submitting.")
+      }
+
+      return false;
+    }
+  </script>
 </head>
 
 <body>
@@ -57,8 +91,10 @@
     can also be validated with JQuery (automatic methods, or pattern matching, 
     etc.) before submission 
     To prevent submission, return false in callback function called when
-    event for on method is 'submit'-->
-    <form id="Form" action="submit.php" method="post">
+    event for on method is 'submit'
+    
+    Force JS to execute before form action with onsubmit, returning false-->
+    <form id="Form" action="submit.php" method="post" onsubmit="return validation()">
       <p class="heading">Contact Form</p>
       <p class="descr"> *All fields are required </p>
       <div class="textseries">
@@ -87,9 +123,9 @@
 
       <p class="descr"><b>Select the reason for your inquiry: </b></p>
       <div id="radios">
-        <input type="radio" id="radioBtn" name="radioBtn" value="A">
+        <input type="radio" id="adoption" name="radioBtn" value="A">
         <label for="adoption">I want to adopt a cat</label>
-        <input type="radio" id="radioBtn" name="radioBtn" value="O">
+        <input type="radio" id="alternative" name="radioBtn" value="O">
         <label for="alternative">Other</label>
       </div>
 

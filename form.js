@@ -16,7 +16,8 @@ $(document).ready(function () {
     }
   });
 
-  function required(item, idx) {
+  // For some reason onsubmit will not call this from an external file 
+  /* function required(item, idx) {
     if ($("#" + item).val() == "") {
       valid = valid && false;
     }
@@ -26,9 +27,10 @@ $(document).ready(function () {
   // Cannot validate with required keyword in HTML for hidden elements, as this
   // causes weird issues with page submission and browser element not focusable
   // error
-  $("#Form").submit(function (e) {
+  function validation() {
+    window.alert("called"); 
     // Force Javascript to execute before submission to php 
-    e.preventDefault();
+    //e.preventDefault();
 
     valid = true;
     var form_type = $('input[type=radio]:checked', '#Form').val();
@@ -41,12 +43,14 @@ $(document).ready(function () {
       adopt.forEach(required);
     } else if (form_type == "O") {
       required("otherDescr", 0);
+    } else {
+      valid = false;
     }
 
     if (!valid) {
       window.alert("Please fill in all fields before submitting.")
     }
 
-    return valid;
-  })
+    return false;
+  }*/
 });
