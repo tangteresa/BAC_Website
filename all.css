@@ -306,12 +306,14 @@
 
   .headshot {
     display: block; 
-    margin: auto; 
+    margin-right: auto; 
+    margin-left: auto; 
     border-style: solid;
     border-color: white;  
     border-width: 0.5em; 
     width: 14em;
     height: 15em; 
+    margin-bottom: 1em; 
   }
 
   .descr { 
@@ -319,6 +321,7 @@
     color: var(--gra);
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif; 
+    margin-top: 0; 
   }
 
   /* Footer */
@@ -396,7 +399,7 @@
     flex-direction: column; 
     width: 75%; 
     margin-bottom: 1em; 
-    margin-top: 0.5em; 
+    margin-top: 0.5em;
   }
 
   #radios {
@@ -477,6 +480,7 @@
     border-color: white; 
     margin-right: auto;
     margin-left: auto; 
+    margin-bottom: 1em; 
 
     /* Auto resize */
     width: 80%;

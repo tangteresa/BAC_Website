@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  var valid = true;
+
   $("#adoptForm").hide();
   $("#otherForm").hide();
 
@@ -13,4 +15,32 @@ $(document).ready(function () {
       $("#otherForm").show();
     }
   });
+
+  function required(item, idx) {
+    if ($("#" + item).val() == "") {
+      valid = valid && false;
+    }
+  }
+
+  // Check required items for adopt vs other form type 
+  $("#Form").on("submit", function () {
+    valid = true;
+    var form_type = $('input[type=radio]:checked', '#Form').val();
+    var adopt = ["catid", "date1", "date2", "time1", "time2"];
+    var general = ["fname", "lname", "email", "phone", "radioBtn"];
+
+    general.forEach(required);
+
+    if (form_type == "A") {
+      adopt.forEach(required);
+    } else if (form_type == "O") {
+      required("otherDescr", 0);
+    }
+
+    if (!valid) {
+      window.alert("Please fill in all fields before submitting.")
+    }
+
+    return valid;
+  })
 });

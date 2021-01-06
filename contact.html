@@ -60,35 +60,36 @@
     event for on method is 'submit'-->
     <form id="Form" action="submit.php" method="post">
       <p class="heading">Contact Form</p>
+      <p class="descr"> *All fields are required </p>
       <div class="textseries">
         <div class="pair">
           <label for="fname">First name: </label>
-          <input type="text" id="fname" name="fname" required>
+          <input type="text" id="fname" name="fname">
         </div>
         <br>
         <div class="pair">
           <label for="lname">Last name: </label>
-          <input type="text" id="lname" name="lname" required>
+          <input type="text" id="lname" name="lname">
         </div>
         <br>
         <div class="pair">
           <label for="email">Email: </label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email">
         </div>
         <br>
         <div class="pair">
           <label for="phone">Phone number: </label>
           <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             oninvalid="setCustomValidity('Phone number format must be xxx-xxx-xxxx')"
-            onchange="try{setCustomValidity('')}catch(e){}" required>
+            onchange="try{setCustomValidity('')}catch(e){}">
         </div>
       </div>
 
       <p class="descr"><b>Select the reason for your inquiry: </b></p>
       <div id="radios">
-        <input type="radio" id="adoption" name="radioBtn" value="A" required>
+        <input type="radio" id="radioBtn" name="radioBtn" value="A">
         <label for="adoption">I want to adopt a cat</label>
-        <input type="radio" id="alternative" name="radioBtn" value="O">
+        <input type="radio" id="radioBtn" name="radioBtn" value="O">
         <label for="alternative">Other</label>
       </div>
 
@@ -98,7 +99,7 @@
             <label for="catid">6-digit cat ID: </label>
             <input type="text" id="catid" name="catid" maxlength="6" min="0" max="999999" placeholder="xxxxxx"
               pattern="[0-9]{6}" oninvalid="setCustomValidity('Cat ID must be 6 digits')"
-              onchange="try{setCustomValidity('')}catch(e){}" required><br>
+              onchange="try{setCustomValidity('')}catch(e){}"><br>
           </div>
         </div>
         <p class="descr"><b>We will contact you to schedule an interview.
@@ -107,30 +108,30 @@
         <div class="textseries">
           <div class="pair">
             <label for="date1">Date 1: </label>
-            <input type="date" id="date1" name="date1" required>
+            <input type="date" id="date1" name="date1">
           </div>
           <br>
           <div class="pair">
             <label for="time1">Select a time for date 1: </label>
-            <input type="time" id="time1" name="time1" required>
+            <input type="time" id="time1" name="time1">
           </div>
           <br>
 
           <div class="pair">
             <label for="date2">Date 2: </label>
-            <input type="date" id="date2" name="date2" required>
+            <input type="date" id="date2" name="date2">
           </div>
           <br>
           <div class="pair">
             <label for="time2">Select a time for date 2: </label>
-            <input type="time" id="time2" name="time2" required>
+            <input type="time" id="time2" name="time2">
           </div>
         </div>
       </div>
 
       <div id="otherForm">
         <p class="descr"><b>Detail your inquiry below: </b></p>
-        <textarea id="otherDescr" name="otherDescr" required></textarea>
+        <textarea id="otherDescr" name="otherDescr"></textarea>
       </div>
 
       <input id="submit" type="submit" value="Submit">

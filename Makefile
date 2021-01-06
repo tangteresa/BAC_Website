@@ -1,2 +1,2 @@
 zip: 
-	zip web.zip *.html *.css *.js images/*
+	zip web.zip *.html *.css *.js images/* *.php
