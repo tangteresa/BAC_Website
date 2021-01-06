@@ -23,6 +23,9 @@ $(document).ready(function () {
   }
 
   // Check required items for adopt vs other form type 
+  // Cannot validate with required keyword in HTML for hidden elements, as this
+  // causes weird issues with page submission and browser element not focusable
+  // error
   $("#Form").on("submit", function () {
     valid = true;
     var form_type = $('input[type=radio]:checked', '#Form').val();
