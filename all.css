@@ -49,6 +49,10 @@
     padding: 0; 
   }
 
+  a {
+    text-decoration: none;
+  }
+
   #logo {
     display: block;
     position: absolute;
@@ -73,6 +77,18 @@
     width: calc(100% - var(--iwidth));
   }
 
+  .hamburg {
+    position: absolute; 
+    right: 0; 
+    height: 100%; 
+    margin-right: 1em; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    color: white; 
+    display: none; 
+  }
+
   .nav li {
     display: inline-block;
     /* Height does not include padding, margins, etc. */
@@ -86,8 +102,6 @@
   .nav li a {
     /* Force conversion to pixels */
     --pad: calc(0.25 * var(--iwidth));
-
-    text-decoration: none;
     color: white;
 
     /* For vertical and horizontal centering, use table cell */
@@ -510,6 +524,12 @@
       width: 100%;
       background-color: var(--blu);
     }
+  
+    .hamburg {
+      display: inline;  
+      background-color: orange; 
+    }
+  
   }
 
   /* Mobile phone */
@@ -519,6 +539,10 @@
       --fntsz: 1;
       --imgwidth: 6;
       --imgheight: 6;
+    }
+
+    .hamburg {
+      display: inline; 
     }
 
     #logo {
