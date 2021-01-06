@@ -21,6 +21,8 @@
     --bluo: rgb(3, 240, 252, 0.75); 
     --gra: #848588; 
     --hov: #26b2b9b6; 
+
+    --marg: 8em; 
   }
 
   /* Remove weird white space around entire white space */
@@ -176,8 +178,8 @@
   }
 
   .slideshowImgContainer {
-    margin-right: 8em;
-    margin-left: 8em; 
+    margin-right: var(--marg);
+    margin-left: var(--marg);
     justify-content: center; 
     background-color: var(--bluo); 
     padding-top: 0.5em;
@@ -246,8 +248,8 @@
     padding-bottom: 1em;
 
     /* Ensures width is always same so hearts or icons stay in proper place */
-    padding-right: 8em;
-    padding-left: 8em; 
+    padding-right: var(--marg);;
+    padding-left: var(--marg);; 
 
     margin-top: 0px; 
 
@@ -258,7 +260,7 @@
 
   .icon-top{
     position: absolute; 
-    right: 7em; 
+    right: calc(var(--marg) - 1em); 
     width: 4em;
     height: 4em; 
     top: -1.75em; 
@@ -267,7 +269,7 @@
 
   .icon-bottom{
     position: absolute; 
-    left: 6em; 
+    left: calc(var(--marg) - 2em); ; 
     width: 4em;
     height: 4em; 
     bottom: 0.15em; 
@@ -276,7 +278,7 @@
 
   .icon-small{
     position: absolute; 
-    left: 11em; 
+    left: calc(var(--marg) + 3em); ; 
     width: 2em;
     height: 2em; 
     bottom: 0.35em; 
@@ -288,8 +290,8 @@
   .employees {
     margin-top: 0px; 
     margin-bottom: 1em;
-    margin-right: 8em;
-    margin-left: 8em; 
+    margin-right: var(--marg);;
+    margin-left: var(--marg);; 
   }
 
   .employee {
@@ -354,7 +356,7 @@
     position: absolute; 
     height: 9em;
     width: 9em; 
-    right: 5em; 
+    right: calc(var(--marg) - 3em); 
     top: 4.5em; 
   }
 
@@ -363,8 +365,8 @@
     justify-content: center; 
     flex-direction: column; 
     background-color: var(--bluo);
-    margin-right: 8em;
-    margin-left: 8em;
+    margin-right: var(--marg);
+    margin-left: var(--marg);
     padding: 1.5em; 
     border-radius: 0.5em;
     margin-top: 1.5em; 
@@ -519,19 +521,28 @@
     margin-bottom: 0
   }
 
+  /* Remove some icons that don't fit */
+  @media screen and (max-width: 670px) {
+    #climb {
+      display: none; 
+    }
+  }
+
   /* Tablet */
   @media screen and (min-width: 450px) and (max-width: 900px) {
     :root {
       font-size: 1em;
+      --marg: 4em; 
     }
 
     #logo {
-      z-index: 1; 
+      z-index: 11; 
     }
 
     .nav {
       width: 100%; 
       left: 0; 
+      z-index: 10; 
     }
     
     .nav li {
@@ -566,12 +577,24 @@
       background-color: var(--blu); 
       box-shadow: 0 0.3em 20px -10px; 
     }
+
+    #slideImg {
+      height: 45vh; 
+    }
+
+    .headshot {
+      width: 60%;
+      height: auto; 
+    }
   
   }
 
   /* Mobile phone */
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 450px) {
     :root {
       font-size: 0.8em;
+      --marg: 2em; 
     }
+
+    /* TO DO */
   }
