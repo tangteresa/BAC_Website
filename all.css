@@ -536,6 +536,35 @@
     margin-bottom: 0
   }
 
+  /* Sometimes will need CTRL + SHIFT + R to force cache reload of CSS 
+  especially if combined with php file */
+  #return {
+    display: block; 
+    margin-right: auto; 
+    margin-left: auto;
+    width: 30%; 
+    border-style: solid; 
+    border-color: white;
+    border-width: 0.25em; 
+    border-radius: 0.5em; 
+    background-color: var(--blu); 
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif; 
+    text-align: center;  
+  }
+
+  #return:active {
+    background-color: var(--hov); 
+  }
+
+  #submitted {
+    flex-grow: 1; 
+    height: 100%;
+    width: 100%;
+    padding-top: 1.5em; 
+    background-color: pink; 
+  }
+
   /* Remove some icons that don't fit */
   @media screen and (max-width: 670px) {
     #climb {

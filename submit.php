@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Submission</title>
+  <link rel="stylesheet" href="all.css">
+</head>
 <body>
-
+<div id="submitted">
 <?php 
 $adopt = array("catid", "date1", "date2", "time1", "time2");
 $other = array("otherDescr"); 
@@ -36,33 +40,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   foreach ($form_fields as $field) {
     if (empty($_POST[$field])) {
       $valid = False; 
-      // $error = "You are missing a field(s). All fields are required."; 
+      echo "<p class='descr'>The required field " . $field . " is missing. </p><br>"; 
     } else {
       $dict[$field] = check_input($_POST[$field]); 
     }
   }
 
+  /* echo "<p class='descr'>The values you have submitted are as follows: </p><br>";
+  foreach($form_fields as $item) {
+    echo "<p class='descr'>" . $dict[$item] . "</p><br>";  
+  } */
+
   foreach (array("fname", "lname") as $name) {
     if (!preg_match("/^[a-zA-Z-' ]*$/", $dict[$name])) {
-      //$nameErr = "Only letters and white space allowed";
       $valid = False;
+      echo "<p class='descr'> Field " . $name . " is invalid. Names can only have letters or whitespace. </p><br>"; 
     }
   }
 
   if (!filter_var($dict["email"], FILTER_VALIDATE_EMAIL)) {
-    //$emailErr = "Invalid email format";
     $valid = False;
+    echo "<p class='descr'>The email format is invalid. </p><br>"; 
   }
 
-  if(preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $dict["phone"])) {
-    //$phoneErr = ""; 
+  if(!preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $dict["phone"])) {
     $valid = False;
+    echo "<p class='descr'>The phone format is invalid. It must be xxx-xxx-xxxx. </p><br>"; 
   }
 
   if ($form_type == "A") {
 
-    if(preg_match('/^[0-9]{6}$/', $dict["catid"])) {
+    if(!preg_match('/^[0-9]{6}$/', $dict["catid"])) {
       $valid = False;
+      echo "<p class='descr'>The cat ID must be 6 digits and contain only numbers. </p><br>";  
     }
     
     foreach (array("date1", "date2") as $date) {
@@ -75,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $month = intval(substr($val, 6, 2)); 
         if (!checkdate($day, $month, $yr)) {
           $date = False; 
+          echo "<p class='descr'>An invalid date was submitted. </p><br>"; 
         }
       }
     }
@@ -82,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     foreach (array("time1", "time2") as $time) {
       if (!preg_match("/^[0-9]{2}:[0-9]{2}$/", $dict[$time])) {
         $valid = False; 
+        echo "<p class='descr'>An invalid time was submitted. </p><br>"; 
       }
     }
   } 
@@ -98,21 +110,14 @@ function check_input($data) {
 
 <?php
 
-echo "The values you submitted are as follows: ";
-foreach($form_fields as $item) {
-  echo $dict[$item];  
-}
-
 if ($valid) {
-  echo "Your form submission is valid. Thank you!"; 
+  echo "<p class='descr'>Your form submission is valid. Thank you!</p>"; 
 } else {
-  echo "There are one or more errors with your form. Please make sure 
-  that names only contain whitespace and letters. Make sure you have the 
-  correct format for phonenumbers, dates, times, etc."; 
+  echo "<p class='descr'>Please correct these errors and resubmit.</p>"; 
 }
 ?>
-
-<a href="contact.html">Return</a>
+<a href="contact.html" id="return">Click here to return</a>
+</div>
 
 </body>
 </html>
