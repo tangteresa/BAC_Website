@@ -565,6 +565,35 @@
     background-color: pink; 
   }
 
+  /* Events page */
+
+  /* How to makme 4:3 aspect ratio */ 
+  /* Must have 3 levels, where googleContainer controls 
+  overall width, google controls aspect ratio with padding-bottom
+  and pos-relative, while iframe/content is absolute and stretches
+  to fill aspect ratio container */ 
+  #googleContainer {
+    margin-right: var(--marg); 
+    margin-left: var(--marg);
+    margin-top: 1.5em;  
+  }
+
+  #google { 
+    width: 100%; 
+    padding-bottom: 75%; 
+    position: relative; 
+  }
+
+  #google iframe {
+    /* Force object to not be contained to 25% leftover space
+    from padding */
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    height: 100%;
+    width: 100%; 
+  }
+
   /* Remove some icons that don't fit */
   @media screen and (max-width: 670px) {
     #climb {
