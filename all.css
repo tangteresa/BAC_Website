@@ -594,6 +594,50 @@
     width: 100%; 
   }
 
+  #mouse {
+    top: -2.5em; 
+  }
+
+  table {
+    margin-right: var(--marg);
+    margin-left: var(--marg); 
+    border-radius: 0.5em; 
+  }
+
+  tr {
+    background-color: white; 
+  }
+
+  .titlerow {
+    background-color: var(--blu); 
+  }
+
+  th {
+    font-size: 1.1em; 
+    color: var(--gra);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    margin-top: 0; 
+    padding: 0.5em; 
+  }
+
+  td {
+    font-size: 1em; 
+    color: var(--gra);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    margin-top: 0; 
+    padding: 0.5em; 
+  }
+
+  .eventname {
+    background-color: rgb(255, 192, 203, 0.75)
+  }
+
+  .timecol {
+    background-color: rgb(203, 214, 216, 0.75); 
+  }
+
   /* Remove some icons that don't fit */
   @media screen and (max-width: 670px) {
     #climb {
