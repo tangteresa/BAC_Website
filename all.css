@@ -594,6 +594,14 @@
     width: 100%; 
   }
 
+  #month {
+    display: block; 
+  }
+
+  #agenda {
+    display: none; 
+  }
+
   #mouse {
     top: -2.5em; 
   }
@@ -636,6 +644,17 @@
 
   .timecol {
     background-color: rgb(203, 214, 216, 0.75); 
+  }
+
+  /* Mobile calendar view */
+  @media screen and (max-width: 540px) {
+    #month {
+      display: none; 
+    }
+
+    #agenda {
+      display: block; 
+    }
   }
 
   /* Remove some icons that don't fit */
