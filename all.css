@@ -390,6 +390,10 @@
     justify-content: flex-end; 
   }
 
+  #catid {
+    margin-bottom: 1.5em; 
+  }
+
   .pair input {
     width: 60%;
   }
@@ -524,7 +528,10 @@
     width: 35vw; 
     position: relative; 
     top: -0.5em; 
-    padding: 1em; 
+    padding-right: 1em; 
+    padding-left: 1em;
+    padding-bottom: 1em;
+    padding-top: 1.5em; 
 
     /* Elements with opacity less than 1 are rendered before/behind those
     with z-indices if they are in the same stacking context */

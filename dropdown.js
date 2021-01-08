@@ -12,6 +12,12 @@ $(document).ready(function () {
 
   function toggleDrop(num) {
     $("#d" + num).toggle();
+
+    if ($("#d" + num).is(":visible")) {
+      $("#" + num).html("About me <br> &#9650;");
+    } else {
+      $("#" + num).html("About me <br> &#9660;");
+    }
   }
 
 });
