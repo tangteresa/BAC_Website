@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Submission</title>
   <link rel="stylesheet" href="all.css">
 </head>
+
 <body>
 <div id="submitted">
-
 <?php 
-function db_connect() {
-  // From W3 Schools tutorial 
-  $servername = "localhost";
-  $username = "root";
-  $password = ""; 
+class Database {
+  public $conn; 
 
-  $conn = new mysqli($servername, $username, $password);
+  function __construct() {
+    // From W3 Schools tutorial 
+    $servername = "localhost";
+    $username = "root";
+    $password = ""; 
 
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    return null; 
-  } 
-  return $conn; 
-}
+    $this->conn = new mysqli($servername, $username, $password);
 
-function is_valid_id($id, $conn) {
-  if (is_null($conn)) {
-    echo "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
-    return false; 
+    if ($this->conn->connect_error) {
+      die("Connection failed: " . $this->conn->connect_error);
+      $this->conn = null; 
+    } 
   }
 
-  $sql = "SELECT * FROM bac.cats WHERE catid=" . $id;
-  $result = mysqli_query($conn, $sql);
-  
-  if(mysqli_num_rows($result) == 0) {
-    echo "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
-    return false; 
-  }
-  return true;  
-}
+  function is_valid_id($id) {
+    if (is_null($this->conn)) {
+      echo "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
+      return false; 
+    }
 
-function cat_name($id, $conn) {
-  if (is_null($conn)) { 
-    return ""; 
+    $sql = "SELECT * FROM bac.cats WHERE catid=" . $id;
+    $result = $this->conn->query($sql);
+    
+    if($result->num_rows == 0) {
+      echo "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
+      return false; 
+    }
+    return true;  
   }
 
-  $sql = "SELECT name FROM bac.cats WHERE catid=" . $id;
-  $result = mysqli_query($conn, $sql);
-  
-  if(mysqli_num_rows($result) == 0) {
-    return ""; 
+  function cat_name($id) {
+    if (is_null($this->conn)) { 
+      return ""; 
+    }
+
+    $sql = "SELECT name FROM bac.cats WHERE catid=" . $id;
+    $result = $this->conn->query($sql);
+    
+    if($result->num_rows == 0) {
+      return ""; 
+    }
+    $row = $result->fetch_assoc();
+    return $row["name"];  
   }
-  $row = mysqli_fetch_assoc($result);
-  return $row["name"];  
 }
 ?>
 
 <?php  
+
+function check_input($data) {
+  // Remove extra spaces 
+  $data = trim($data);
+  // Remove things like <script> so less chance of hacking 
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 $adopt = array("catid", "date1", "date2", "time1", "time2");
 $other = array("otherDescr"); 
 $general = array("fname", "lname", "email", "phone"); 
@@ -95,11 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  /* echo "<p class='descr'>The values you have submitted are as follows: </p><br>";
-  foreach($form_fields as $item) {
-    echo "<p class='descr'>" . $dict[$item] . "</p><br>";  
-  } */
-
   foreach (array("fname", "lname") as $name) {
     if (!preg_match("/^[a-zA-Z-' ]*$/", $dict[$name])) {
       $valid = False;
@@ -124,9 +132,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "<p class='descr'>The cat ID must be 6 digits and contain only numbers. </p><br>";  
     } else {
       // Check if cat ID exists in database 
-      $connection = db_connect(); 
-      $valid = $valid && is_valid_id($dict["catid"], $connection); 
-      $catname = cat_name($dict["catid"], $connection); 
+      $db = new Database(); 
+      $valid = $valid && $db->is_valid_id($dict["catid"]); 
+      $catname = $db->cat_name($dict["catid"]); 
     }
     
     foreach (array("date1", "date2") as $date) {
@@ -152,17 +160,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   } 
 }
-
-function check_input($data) {
-  // Remove extra spaces 
-  $data = trim($data);
-  // Remove things like <script> so less chance of hacking 
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
-
-<?php
 
 if ($valid) {
   echo "<p class='descr'>Your form submission is valid. Thank you!</p>"; 
