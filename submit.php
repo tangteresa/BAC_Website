@@ -6,7 +6,56 @@
 </head>
 <body>
 <div id="submitted">
+
 <?php 
+function db_connect() {
+  // From W3 Schools tutorial 
+  $servername = "localhost";
+  $username = "root";
+  $password = ""; 
+
+  $conn = new mysqli($servername, $username, $password);
+
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    return null; 
+  } 
+  return $conn; 
+}
+
+function is_valid_id($id, $conn) {
+  if (is_null($conn)) {
+    echo "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
+    return false; 
+  }
+
+  $sql = "SELECT * FROM bac.cats WHERE catid=" . $id;
+  $result = mysqli_query($conn, $sql);
+  
+  if(mysqli_num_rows($result) == 0) {
+    echo "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
+    return false; 
+  }
+  return true;  
+}
+
+function cat_name($id, $conn) {
+  if (is_null($conn)) { 
+    return ""; 
+  }
+
+  $sql = "SELECT name FROM bac.cats WHERE catid=" . $id;
+  $result = mysqli_query($conn, $sql);
+  
+  if(mysqli_num_rows($result) == 0) {
+    return ""; 
+  }
+  $row = mysqli_fetch_assoc($result);
+  return $row["name"];  
+}
+?>
+
+<?php  
 $adopt = array("catid", "date1", "date2", "time1", "time2");
 $other = array("otherDescr"); 
 $general = array("fname", "lname", "email", "phone"); 
@@ -73,6 +122,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!preg_match('/^[0-9]{6}$/', $dict["catid"])) {
       $valid = False;
       echo "<p class='descr'>The cat ID must be 6 digits and contain only numbers. </p><br>";  
+    } else {
+      // Check if cat ID exists in database 
+      $connection = db_connect(); 
+      $valid = $valid && is_valid_id($dict["catid"], $connection); 
+      $catname = cat_name($dict["catid"], $connection); 
     }
     
     foreach (array("date1", "date2") as $date) {
@@ -112,10 +166,15 @@ function check_input($data) {
 
 if ($valid) {
   echo "<p class='descr'>Your form submission is valid. Thank you!</p>"; 
+  if(strlen($catname) > 0) {
+    $capname = ucfirst($catname); 
+    echo "<p class='descr'>We will contact you within 3 business days about your adoption of $capname.</p>"; 
+  }
 } else {
   echo "<p class='descr'>Please correct these errors and resubmit.</p>"; 
 }
 ?>
+
 <a href="contact.html" id="return">Click here to return</a>
 </div>
 
