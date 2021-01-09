@@ -540,7 +540,19 @@
     z-index: 2; 
     /* Account for padding in width */
     box-sizing: border-box;
-    margin-bottom: 0
+    margin-bottom: 0;
+    animation-name: none;
+    animation-duration: 0.5s; 
+    animation-direction: normal; 
+    animation-timing-function: ease-out;
+  }
+
+  @keyframes drop {
+    0%   {top: -3em;}
+    25%  {top: -2.5em;}
+    50%  {top: -1.5em;}
+    75%  {top: -1em;}
+    100% {top: -0.5em;}
   }
 
   /* Sometimes will need CTRL + SHIFT + R to force cache reload of CSS 
