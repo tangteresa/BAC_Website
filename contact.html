@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" src="form.js"></script>
   <script type="text/javascript" src="menu.js"></script>
-
+  <script type="text/javascript" src="update.js"></script>
   <script>
     // For some reason this has to be included for onsubmit to recognize it 
     var valid = true;
@@ -132,14 +132,18 @@
       </div>
 
       <div id="adoptForm">
-        <div class="textseries">
-          <div class="pair">
-            <label for="catid">6-digit cat ID: </label>
-            <input type="text" id="catid" name="catid" maxlength="6" min="0" max="999999" placeholder="xxxxxx"
+        <div id="idpair" class="pair">
+          <label for="catid">6-digit cat ID: </label>
+          <select id="catid" name="catid">
+          </select>
+
+          <!-- Example of custom validation message with text input -->
+          <!--<input type="text" id="catid" name="catid" maxlength="6" min="0" max="999999" placeholder="xxxxxx"
               pattern="[0-9]{6}" oninvalid="setCustomValidity('Cat ID must be 6 digits')"
-              onchange="try{setCustomValidity('')}catch(e){}"><br>
-          </div>
+              onchange="try{setCustomValidity('')}catch(e){}">-->
+          <br>
         </div>
+
         <p class="descr"><b>We will contact you to schedule an interview.
             Please select two times below that match your availability (specify AM or PM): </b></p><br>
 

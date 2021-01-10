@@ -401,8 +401,11 @@
     justify-content: flex-end; 
   }
 
-  #catid {
-    margin-bottom: 1.5em; 
+  #idpair {
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 1.75em;
+    margin-top: 0.5em; 
   }
 
   .pair input {

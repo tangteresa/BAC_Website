@@ -42,6 +42,17 @@ class Database {
     return true;  
   }
 
+  function idnames() {
+    if (is_null($this->conn)) { 
+      return null; 
+    }
+
+    $sql = "SELECT catid, name FROM bac.cats";
+    $result = $this->conn->query($sql);
+    
+    return $result; 
+  }
+
   function cat_name($id) {
     if (is_null($this->conn)) { 
       return ""; 
