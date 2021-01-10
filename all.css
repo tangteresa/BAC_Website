@@ -236,6 +236,17 @@
     font-family: Arial, Helvetica, sans-serif; 
   }
 
+  #contact {
+    padding-right: 1em; 
+    padding-left: 1em; 
+    box-sizing: border-box; 
+  }
+
+  u{
+    text-decoration: underline;
+    text-decoration-color: pink;
+  }
+
   .blurb {
     background-color: white; 
     padding: 1em 1em; 
