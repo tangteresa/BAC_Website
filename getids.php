@@ -1,5 +1,5 @@
 <?php 
-require_once('submit.php'); 
+require_once('db.php'); 
 
 $db = new Database();
 $result = $db->idnames(); 
