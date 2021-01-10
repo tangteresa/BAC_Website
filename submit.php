@@ -8,6 +8,30 @@
 
 <body>
 <div id="submitted">
+
+<?php 
+function send_confirmation($form_type, $values, $catname) {
+  $to = $values["email"];
+  $subject = "Buddy Adoption Center Inquiry Confirmation Email";
+  $greeting = "Hello " . $values["fname"] . " " . $values["lname"] . "!\r\n";
+
+  if ($form_type == "A") {
+    $body = "You requested an interview for the adoption of " . ucfirst($catname) . 
+    " at times " . $values["time1"] . " on " . $values["date1"] . " and "
+    . $values["time2"] . " on " . $values["date2"] . "."; 
+  } else {
+    $body = "We have received your inquiry request, which was as follows: \r\n \r\n" . 
+    $values["otherDescr"]; 
+  } 
+
+  $end = "\r\n \r\nWe will be in touch within 3 business days!\r\nPeace, \r\nBuddy Adoption Center"; 
+  $msg = $greeting . wordwrap($body, 70) . $end; 
+  $headers = "From: inquiries@bac.com"; 
+  
+  mail($to, $subject, $msg, $headers);
+}
+?>
+
 <?php  
 require_once("db.php"); 
 
@@ -118,6 +142,10 @@ if ($valid) {
     $capname = ucfirst($catname); 
     echo "<p class='descr'>We will contact you within 3 business days about your adoption of $capname.</p>"; 
   }
+
+  // Use if SMTP server is setup with account inquiries@bac.com 
+  // Otherwise, can test by uncommenting and also installing Papercut on machine
+  // send_confirmation($form_type, $dict, $catname); 
 } else {
   echo "<p class='descr'>Please correct these errors and resubmit.</p>"; 
 }
