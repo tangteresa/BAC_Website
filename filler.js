@@ -16,10 +16,6 @@ $(document).ready(function () {
         $("#alternative").prop('checked', true);
       }
 
-      // Clear session variable
-      var filler = { fill: false, formFields: [], formVals: {}, formType: '' };
-      sessionStorage.setItem("filler", JSON.stringify(filler));
-
     }
   }
 

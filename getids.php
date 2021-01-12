@@ -5,7 +5,7 @@ $db = new Database();
 $result = $db->idnames(); 
 
 // Default option
-$html = "<option value='' selected disabled hidden>Choose here</option>"; 
+$html = "<option id='default' value='' selected disabled hidden>Choose here</option>"; 
 if ($result->num_rows > 0) {
   // SELECT data will always return an association array
   // Even if only one column selected
@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
     $id = $row["catid"]; 
     $name = ucfirst($row["name"]); 
-    $html = $html . "<option value=$id>$name - $id</option>"; 
+    $html = $html . "<option id=$id value=$id>$name - $id</option>"; 
   }
 }
 
