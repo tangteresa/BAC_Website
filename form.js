@@ -1,11 +1,20 @@
 $(document).ready(function () {
   var valid = true;
 
-  $("#adoptForm").hide();
-  $("#otherForm").hide();
+  // Initialization 
+  // For if radio input was already checked before reloading 
+  var reason = $('input[type=radio]:checked', '#Form').val();
+  if (reason == "A") {
+    $("#otherForm").hide();
+  } else if (reason == "O") {
+    $("#adoptForm").hide();
+  } else {
+    $("#otherForm").hide();
+    $("#adoptForm").hide();
+  }
 
   $("input[type=radio]").on('change', function () {
-    var reason = $('input[type=radio]:checked', '#Form').val();
+    reason = $('input[type=radio]:checked', '#Form').val();
 
     if (reason == "A") {
       $("#otherForm").hide();

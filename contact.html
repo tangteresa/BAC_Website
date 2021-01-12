@@ -14,7 +14,6 @@
   <!-- Scripts -->
   <script src="jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script type="text/javascript" src="form.js"></script>
   <script type="text/javascript" src="menu.js"></script>
   <script type="text/javascript" src="update.js"></script>
   <script>
@@ -22,8 +21,14 @@
     var valid = true;
 
     function required(item, idx) {
-      if ($("#" + item).val() == "") {
-        valid = valid && false;
+      if (item == "catid") {
+        if ($("option:selected").val() == "") {
+          valid = valid && false;
+        }
+      } else {
+        if ($("#" + item).val() == "") {
+          valid = valid && false;
+        }
       }
     }
 
@@ -50,6 +55,9 @@
       return valid;
     }
   </script>
+  <script src="filler.js"></script>
+  <!-- Force hiding/showing of form options to occur after formType is set-->
+  <script type="text/javascript" src="form.js"></script>
 </head>
 
 <body>
@@ -117,7 +125,8 @@
         <br>
         <div class="pair">
           <label for="phone">Phone number: </label>
-          <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" -->
+          <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx"
             oninvalid="setCustomValidity('Phone number format must be xxx-xxx-xxxx')"
             onchange="try{setCustomValidity('')}catch(e){}">
         </div>

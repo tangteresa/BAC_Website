@@ -3,6 +3,7 @@
 
 <head>
   <title>Submission</title>
+  <script src="jquery-3.5.1.min.js"></script>
   <link rel="stylesheet" href="all.css">
 </head>
 
@@ -44,7 +45,7 @@ function check_input($data) {
 }
 
 $adopt = array("catid", "date1", "date2", "time1", "time2");
-$other = array("otherDescr"); 
+$other = array("otherDescr");
 $general = array("fname", "lname", "email", "phone"); 
 
 $dict = array(
@@ -62,6 +63,7 @@ $dict = array(
 
 $valid = True; 
 $catname = ""; 
+$form_type = ''; 
 
 // Check required fields are not empty first 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -70,8 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($form_type == "A") {
     $form_fields = array_merge($general, $adopt); 
-  } else {
+  } else if ($form_type == "O") {
     $form_fields = array_merge($general, $other); 
+  } else {
+    echo "<p class='descr'>You must specify the type of inquiry you are making</p><br>"; 
+    $valid = False; 
+    $form_fields = $general; 
   }
 
   foreach ($form_fields as $field) {
@@ -138,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if ($valid) {
   echo "<p class='descr'>Your form submission is valid. Thank you!</p>"; 
-  if(strlen($catname) > 0) {
+  if($form_type == 'A') {
     $capname = ucfirst($catname); 
     echo "<p class='descr'>We will contact you within 3 business days about your adoption of $capname.</p>"; 
   }
@@ -151,8 +157,27 @@ if ($valid) {
 }
 ?>
 
-<a href="contact.html" id="return">Click here to return</a>
+<a href="contact.html#Form" id="return">Click here to return</a>
 </div>
+
+<script>
+    $(document).ready(function () {
+      function convert() {
+        var isValid = <?php echo json_encode($valid) ?>; 
+        if(!isValid) {
+          var fields = <?php echo json_encode($form_fields); ?>; 
+          var values = <?php echo json_encode($dict); ?>; 
+          var form_type = <?php echo json_encode($form_type) ?>; 
+          var filler = {fill: true, formFields: fields, formVals: values, formType: form_type}; 
+          // sessionStorage saves string key/value pairs 
+          // JSON stringify cannot stringify functions bc funcs aren't valid JSON
+          sessionStorage.setItem("filler", JSON.stringify(filler)); 
+        }
+      }
+
+      $("#return").click(convert); 
+    }); 
+</script>
 
 </body>
 </html>
