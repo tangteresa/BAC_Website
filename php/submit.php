@@ -3,8 +3,8 @@
 
 <head>
   <title>Submission</title>
-  <script src="jquery-3.5.1.min.js"></script>
-  <link rel="stylesheet" href="all.css">
+  <script src="../js/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" href="../css/all.css">
 </head>
 
 <body>
@@ -114,7 +114,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
       // Check if cat ID exists in database 
       $db = new Database(); 
-      $valid = $valid && $db->is_valid_id($dict["catid"]); 
+      $idErr = $db->is_valid_id($dict["catid"]); 
+      echo $idErr; 
+      $valid = $valid && ($idErr == ""); 
       $catname = $db->cat_name($dict["catid"]); 
     }
     
@@ -157,7 +159,7 @@ if ($valid) {
 }
 ?>
 
-<a href="contact.html#Form" id="return">Click here to return</a>
+<a href="../contact.html#Form" id="return">Click here to return</a>
 </div>
 
 <script>

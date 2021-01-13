@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  var valid = true;
-
   // Initialization 
   // For if radio input was already checked before reloading 
   var reason = $('input[type=radio]:checked', '#Form').val();

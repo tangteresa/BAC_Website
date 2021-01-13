@@ -150,7 +150,7 @@
     top: var(--iheight); */
     margin-top: var(--iheight); 
     padding-bottom: 2em; 
-    background-image: url("images/paws.png"); 
+    background-image: url("../images/paws.png"); 
   }
 
   /* Slideshow items */

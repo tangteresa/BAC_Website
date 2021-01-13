@@ -16,20 +16,21 @@ class Database {
     } 
   }
 
+  // Returns empty error message if valid, otherwise returns error message 
   function is_valid_id($id) {
+    $err = ""; 
     if (is_null($this->conn)) {
-      echo "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
-      return false; 
+      $err = "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
+      return $err; 
     }
 
     $sql = "SELECT * FROM bac.cats WHERE catid=" . $id;
     $result = $this->conn->query($sql);
     
     if($result->num_rows == 0) {
-      echo "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
-      return false; 
+      $err = "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
     }
-    return true;  
+    return $err;  
   }
 
   function idnames() {

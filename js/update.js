@@ -22,6 +22,6 @@ $(document).ready(function () {
       sessionStorage.setItem("filler", JSON.stringify(filler));
     }
   };
-  xmlhttp.open("GET", "getids.php", true);
+  xmlhttp.open("GET", "php/getids.php", true);
   xmlhttp.send();
 }); 
