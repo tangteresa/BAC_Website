@@ -40,6 +40,8 @@
     margin: 0;
     padding: 0; 
     width: 100%; 
+
+    /* Removes extra white space for mobile views */ 
     overflow-x: hidden;
 
     /* For solving issue of forcing footer to bottom of page content 
@@ -136,6 +138,7 @@
     vertical-align: middle;
     display: table-cell;*/
 
+    /* Flexbox centering */ 
     display: flex;
 		align-items: center;
 		justify-content: center;
@@ -751,6 +754,8 @@
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
+
+      /* Forces height to be that of navbar, not height of inner text */ 
       height: var(--iheight); 
     }
   
@@ -863,6 +868,7 @@
       box-shadow: 0 0.3em 20px -10px; 
     }
 
+    /* Shrink and shift icon to reduce overflow */ 
     .icon-top {
       height: 2em; 
       width: 2em;
