@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // Slideshow.js called from html in a directory above, so don't need ../images 
   var images = [
     "images/sign.png",
     "images/poster.png",
