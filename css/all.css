@@ -1,17 +1,12 @@
-  /* Computer screen */
-
   /* Scaling options: 
-    -pixels (not recommended, varies with device)
-    - em (based on font size; think of it as still absolute, as
-    long as font size stays constant) 
-    - vh and vw (with regard to viewport, very scalable!) 
+    - Pixels (not recommended by W3, varies with device)
+    - em (based on font size; will be absolute as if font size stays constant) 
+    - vh and vw (with regard to viewport, very scalable) 
 
-    Margins and padding are your best friends! 
+    Margins and padding help with scaling too!
   */
 
   :root {
-    /* em are with respect to current font sizes and recommended! */
-    /* best for scalability */
     --iwidth: 4em;
     --iheight: 4em;
     font-size: 1.2em;
@@ -25,15 +20,15 @@
     --marg: 8em; 
   }
 
-  /* Remove weird white space around entire white space */
-  /* Use these lines to remove any whitespace in general */
   body {
+    /* Removes extra white space around entire webpage */
+    /* Can use these lines to remove any whitespace in general */
     margin: 0;
     padding: 0; 
 
     /* For solving issue of forcing footer to bottom of page content 
-    Flex: 1 for main content div, but not header and footer; those will
-    automatically sandwich main content...then add margin to force main content
+    Add flex: 1 for main content div, but not header and footer; those will
+    automatically sandwich main content. Then add margin to force main content
     below header */ 
     display: flex; 
     min-height: 100vh; 
@@ -73,9 +68,11 @@
     margin: 0;
     padding: 0;
     height: var(--iheight);
+
     /* Possible solution for removing whitespace between elements */
-    /*white-space: nowrap;
+    /* white-space: nowrap;
     font-size: 0;*/
+
     background-color: var(--blu);
     width: calc(100% - var(--iwidth));
   }
@@ -83,6 +80,10 @@
   .hamburg {
     position: absolute; 
     right: 0; 
+
+    /* Height does not include padding, margins, etc. unless box-sizing: 
+    border-box specified */
+    /* Height of child elements is with reference to parent height */
     height: 100%; 
     padding-right: 1.5em;
     padding-left: 1.5em; 
@@ -94,8 +95,6 @@
 
   .nav li {
     display: inline-block;
-    /* Height does not include padding, margins, etc. */
-    /* Height of child elements is with reference to parent height */
   }
 
   .nav li a:hover {
@@ -107,20 +106,13 @@
     --pad: calc(0.25 * var(--iwidth));
     color: white;
 
-    /* For vertical and horizontal centering, use table cell */
+    /* For vertical and horizontal centering, can use table cell */
     /* Acts like td element */
     text-align: center;
     vertical-align: middle;
     display: table-cell;
 
     font-family: Arial, Helvetica, sans-serif;
-    /* Changing em of an element means em will mean different value */
-    /*font-size: 1.5em;*/
-
-    /* Force conversion to pixels */
-    /* Need pixels because % would be relative to parent container */
-    /*calc(var(--iheightdec) * 100vh - 0px)*/
-
     height: var(--iheight);
     padding-right: var(--pad);
     padding-left: var(--pad);
@@ -143,18 +135,13 @@
   .mainContent {
     flex: 1; 
     width: 100%; 
-    /* Since there is no positioned ancestor, it is relative to viewport */
-    /* Moves along with page scrolling */
-    /*position: absolute;
-    left: 0px; 
-    top: var(--iheight); */
     margin-top: var(--iheight); 
     padding-bottom: 2em; 
     background-image: url("../images/paws.png"); 
   }
 
   /* Slideshow items */
-  
+
   #welcContainer {
     padding-right: 1em;
     padding-left: 1em; 
@@ -258,7 +245,8 @@
     padding-top: 0px;
     padding-bottom: 1em;
 
-    /* Ensures width is always same so hearts or icons stay in proper place */
+    /* Ensures distance from browser edges is always same so hearts or 
+    icons stay in proper place */
     padding-right: var(--marg);;
     padding-left: var(--marg);; 
 
@@ -336,6 +324,7 @@
   }
 
   /* Footer */
+
   footer {
     background-color: var(--blu); 
     width: 100%; 
@@ -467,8 +456,8 @@
     width: 75%;
     height: 20vh; 
 
-    /* If adding width to justify content obj causes it
-    to go off center, add margin-right and left auto to recenter */
+    /* If adding width to justify content object causes it
+    to go off center, can add margin-right and left auto to recenter */
     margin-right: auto;
     margin-left: auto; 
   }
@@ -510,7 +499,7 @@
     margin-left: auto; 
     margin-bottom: 1em; 
 
-    /* Auto resize */
+    /* Auto resize to scale */
     width: 80%;
     height: auto; 
   }
@@ -538,6 +527,7 @@
 
   .dropdownContent {
     background-color: white; 
+
     /* Same width as catContainer */
     width: 35vw; 
     position: relative; 
@@ -552,6 +542,7 @@
     /* Stacking contexts are created from top to bottom (i.e. a parent and its
     children are in the same stacking context) */ 
     z-index: 2; 
+
     /* Account for padding in width */
     box-sizing: border-box;
     margin-bottom: 0;
@@ -602,8 +593,8 @@
 
   /* How to makme 4:3 aspect ratio */ 
   /* Must have 3 levels, where googleContainer controls 
-  overall width, google controls aspect ratio with padding-bottom
-  and pos-relative, while iframe/content is absolute and stretches
+  overall width, #google controls aspect ratio with padding-bottom
+  and position relative, while iframe/content is absolute and stretches
   to fill aspect ratio container */ 
   #googleContainer {
     margin-right: var(--marg); 
@@ -611,6 +602,10 @@
     margin-top: 1.5em;  
   }
 
+  /* Empty div default height is 0, but height doesn't include padding and padding
+  will increase div size...plus since padding % is calculated with respect to 
+  current element width, result is a div whose height is 75% of width 
+  (4:3 aspect ratio) */
   #google { 
     width: 100%; 
     padding-bottom: 75%; 
@@ -623,6 +618,11 @@
     position: absolute; 
     top: 0; 
     left: 0; 
+
+    /* Ensures parent div won't be stretched out because height: 100% means it
+    will determine height based on parent's height, not parent height being affected
+    by child content size */ 
+    /* Basically height with percentage value calculated wrt parent */ 
     height: 100%;
     width: 100%; 
   }
