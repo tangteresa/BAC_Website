@@ -4,9 +4,10 @@ $(document).ready(function () {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
+      // Populate cat ID dropdown select on form with IDs from database 
       document.getElementById("catid").innerHTML = this.responseText;
 
-      // If form is being refilled 
+      // If form is being repopulated with user inputs 
       // Want to set catID to whatever user previously set it as 
       var sessItem = sessionStorage.getItem("filler");
       if (typeof sessItem == 'string') {
@@ -16,8 +17,8 @@ $(document).ready(function () {
         }
       }
       // Clear session variable 
-      // Cannot clear in filler.js because we don't know when the AJAX
-      // response acceptance will be executed 
+      // Cannot clear in filler.js because unknown when the AJAX
+      // response acceptance will be executed/callbacked 
       var filler = { fill: false, formFields: [], formVals: {}, formType: '' };
       sessionStorage.setItem("filler", JSON.stringify(filler));
     }

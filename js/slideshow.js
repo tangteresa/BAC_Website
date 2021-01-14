@@ -1,3 +1,4 @@
+// Script to run image gallery/slideshow in index.html 
 $(document).ready(function () {
   // Slideshow.js called from html in a directory above, so don't need ../images 
   var images = [

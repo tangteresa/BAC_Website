@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  // Use window.innerWidth instead of $(window).width() 
-  // .width() doesn't include scrollbar (17 px)
+  /* Used window.innerWidth instead of $(window).width() because .width() doesn't 
+  include scrollbar (17 px) */
   // innerWidth includes scrollbar but not window border
   // outerWidth includes window border
   if (window.innerWidth >= 900) {
@@ -9,6 +9,7 @@ $(document).ready(function () {
     $(".links").hide();
   }
 
+  // Can also be done with media queries 
   $(window).on('resize', function () {
     if (window.innerWidth >= 900) {
       $(".links").show();
@@ -17,6 +18,7 @@ $(document).ready(function () {
     }
   });
 
+  // Highlight hamburger menu icon if mobile menu is opened 
   $(".hamburg").on('click', function () {
     $(".links").toggle();
     if ($(".links").is(":hidden")) {

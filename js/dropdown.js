@@ -1,19 +1,20 @@
 $(document).ready(function () {
+  // Stores whether each cat profile 'About Me' dropdown is down or retracted 
   var is_down = [];
-  var highest = 6;
 
-  for (i = 1; i <= highest; i++) {
+  // Number of cat profiles on cats page 
+  var numProfiles = document.getElementsByClassName("catDropdown").length;
+
+  for (i = 1; i <= numProfiles; i++) {
     is_down.push(false);
     $("#d" + i).hide();
 
-    // If you define function closure directly here and use i in the body
-    // It will evaluate to 7 because that is the last value of i 
-    // But JS uses lexical scope??? Confusion 
-    // Maybe something to do with JS execution contexts/no compilation 
+    /* If function is defined directly here and uses i in the body, it will 
+    evaluate to 7 because that is the last value of i. However, JS uses 
+    lexical scope? Might have to do with hoisting or execution contexts */
 
-    // Passing reference to function reset (instead of the value resulting from
-    // executing reset via reset())
-    // That way callback function can be called whenever necessary 
+    /* Passing reference to function reset (instead of the value resulting from
+    executing reset via reset()) */
     $("#d" + i).on('animationend', reset);
   }
 
@@ -22,7 +23,7 @@ $(document).ready(function () {
     toggleDrop(num);
   });
 
-  // Code for non-animation dropdown 
+  // Code for non-animated dropdown 
   /*function toggleDrop(num) {
     $("#d" + num).toggle();
 
@@ -34,7 +35,7 @@ $(document).ready(function () {
   }*/
 
   function toggleDrop(num) {
-    // Non-animation dropdown 
+    // Uncomment for non-animated dropdown 
     //$("#d" + num).toggle();
 
     if (is_down[num]) {
@@ -57,6 +58,8 @@ $(document).ready(function () {
     $("#d" + num).css('animation-direction', 'reverse');
   }
 
+  /* Whenever drop or retraction animation is over, reset CSS properties to 
+  default */
   function reset() {
     var id = $(this).attr('id');
     var num = id.charAt(1);

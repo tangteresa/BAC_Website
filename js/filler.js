@@ -1,6 +1,7 @@
-// Check if form needs to be filled 
+/* If user submitted an invalid form, then repopulate form with their
+inputs so that they can correct their mistakes */
 $(document).ready(function () {
-  // Retrieve form values set in submit.php 
+  // Retrieve form values stored in submit.php 
   var sessItem = sessionStorage.getItem("filler");
   if (typeof sessItem == 'string') {
     var data = JSON.parse(sessItem);

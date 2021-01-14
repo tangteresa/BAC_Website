@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // Initialization 
-  // For if radio input was already checked before reloading 
+  // For if radio input was already checked on page reload, such as by filler.js
   var reason = $('input[type=radio]:checked', '#Form').val();
   if (reason == "A") {
     $("#otherForm").hide();
@@ -11,6 +11,7 @@ $(document).ready(function () {
     $("#adoptForm").hide();
   }
 
+  // Toggle which form fields show based on type of form selected by user 
   $("input[type=radio]").on('change', function () {
     reason = $('input[type=radio]:checked', '#Form').val();
 
@@ -23,7 +24,7 @@ $(document).ready(function () {
     }
   });
 
-  // For some reason onsubmit will not call this from an external file 
+  // onsubmit will not call this from an external file, so it is moved to html
   /* function required(item, idx) {
     if ($("#" + item).val() == "") {
       valid = valid && false;
