@@ -20,11 +20,27 @@
     --marg: 8em; 
   }
 
+  /* Give all elements border-box property (accounts for padding in width) */ 
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+
+    /* Removes extra white space for mobile views */ 
+    overflow-x: hidden; 
+  }
+
   body {
     /* Removes extra white space around entire webpage */
     /* Can use these lines to remove any whitespace in general */
     margin: 0;
     padding: 0; 
+    width: 100%; 
+    overflow-x: hidden;
 
     /* For solving issue of forcing footer to bottom of page content 
     Add flex: 1 for main content div, but not header and footer; those will
@@ -61,6 +77,8 @@
   }
 
   .nav {
+    display: flex; 
+    justify-content: flex-start; 
     position: absolute;
     top: 0px;
     left: var(--iwidth);
@@ -68,13 +86,17 @@
     margin: 0;
     padding: 0;
     height: var(--iheight);
+    background-color: var(--blu);
+    width: calc(100% - var(--iwidth));
 
     /* Possible solution for removing whitespace between elements */
     /* white-space: nowrap;
     font-size: 0;*/
+  }
 
-    background-color: var(--blu);
-    width: calc(100% - var(--iwidth));
+  .links {
+    display: flex; 
+    justify-content: flex-start; 
   }
 
   .hamburg {
@@ -94,7 +116,9 @@
   }
 
   .nav li {
-    display: inline-block;
+    height: 100%; 
+    margin-right: 0;
+    margin-left: 0; 
   }
 
   .nav li a:hover {
@@ -108,15 +132,18 @@
 
     /* For vertical and horizontal centering, can use table cell */
     /* Acts like td element */
-    text-align: center;
+    /*text-align: center;
     vertical-align: middle;
-    display: table-cell;
+    display: table-cell;*/
+
+    display: flex;
+		align-items: center;
+		justify-content: center;
 
     font-family: Arial, Helvetica, sans-serif;
-    height: var(--iheight);
+    height: 100%; 
     padding-right: var(--pad);
     padding-left: var(--pad);
-    width: 100%;
     word-spacing: 0.2em;
   }
 
@@ -226,7 +253,6 @@
   #contact {
     padding-right: 1em; 
     padding-left: 1em; 
-    box-sizing: border-box; 
   }
 
   u{
@@ -329,10 +355,10 @@
     background-color: var(--blu); 
     width: 100%; 
     padding: 0.25em; 
-    box-sizing: border-box; 
     display: flex; 
     justify-content: center; 
     flex-direction: column; 
+    margin: 0; 
   }
 
   .iconContainer {
@@ -518,7 +544,6 @@
     border-style: hidden; 
     z-index: 3; 
     padding: 0.5em; 
-    box-sizing: border-box; 
   }
 
   .drop:focus {
@@ -543,8 +568,6 @@
     children are in the same stacking context) */ 
     z-index: 2; 
 
-    /* Account for padding in width */
-    box-sizing: border-box;
     margin-bottom: 0;
     animation-name: none;
     animation-duration: 0.5s; 
@@ -701,7 +724,7 @@
   @media screen and (min-width: 450px) and (max-width: 900px) {
     :root {
       font-size: 1em;
-      --marg: 4em; 
+      --marg: 3em; 
     }
 
     #logo {
@@ -728,6 +751,7 @@
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
+      height: var(--iheight); 
     }
   
     .hamburg {
@@ -740,6 +764,8 @@
     }
 
     .links {
+      flex-direction: column; 
+      align-items: center; 
       width: 100%; 
       position: absolute; 
       top: var(--iheight); 
@@ -763,6 +789,16 @@
     .dropdownContent {
       width: 50vw; 
     }
+
+    .icon-top {
+      height: 3em; 
+      width: 3em; 
+    }
+
+    .icon-bottom {
+      height: 3em; 
+      width: 3em; 
+    }
   
   }
 
@@ -770,7 +806,7 @@
   @media screen and (max-width: 450px) {
     :root {
       font-size: 0.8em;
-      --marg: 2em; 
+      --marg: 1em; 
     }
 
     .catContainer { 
@@ -810,6 +846,7 @@
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
+      height: var(--iheight); 
     }
 
     .hamburg:active {
@@ -817,6 +854,8 @@
     }
 
     .links {
+      flex-direction: column; 
+      align-items: center; 
       width: 100%; 
       position: absolute; 
       top: var(--iheight); 
@@ -825,14 +864,22 @@
     }
 
     .icon-top {
-      height: 3em; 
-      width: 3em; 
+      height: 2em; 
+      width: 2em;
+      right: 1em;  
+      top: -1.25em; 
+    }
+
+    #mouse {
+      top: -1.5em; 
     }
 
     .icon-bottom {
-      height: 3em; 
-      width: 3em; 
-      left: 1.3em;  
+      height: 2em; 
+      width: 2em; 
+      left: 1.1em;  
+      transform: rotate(-13deg); 
+      bottom: 0.1em; 
     }
 
     #slideImg {
