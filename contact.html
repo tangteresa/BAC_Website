@@ -10,16 +10,18 @@
     Contact
   </title>
   <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Scripts -->
   <script src="js/jquery-3.5.1.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" src="js/menu.js"></script>
   <script type="text/javascript" src="js/update.js"></script>
   <script>
-    // For some reason this has to be included for onsubmit to recognize it 
+    // This has to be included in html file for onsubmit to recognize it 
+    // Validate client submitted contact form 
     var valid = true;
 
+    // Checks whether required form fields are empty 
     function required(item, idx) {
       if (item == "catid") {
         if ($("option:selected").val() == "") {
@@ -56,7 +58,7 @@
     }
   </script>
   <script src="js/filler.js"></script>
-  <!-- Force hiding/showing of form options to occur after formType is set-->
+  <!-- Force hiding/showing of form options to occur after formType is set by filler.js-->
   <script type="text/javascript" src="js/form.js"></script>
 </head>
 
@@ -69,7 +71,7 @@
         <ul class="nav">
           <a class="hamburg" href="javascript:;"><i class="fa fa-bars"></i> </a>
 
-          <!-- Skip closing tag to remove spaces between inline elements-->
+          <!-- Skipped closing tag to remove spaces between inline elements-->
           <div class="links">
             <li><a href="index.html">Buddy Adoption Center</a>
             <li><a href="cats.html">Cats</a>
@@ -97,7 +99,7 @@
       </div>
     </div>
 
-    <!-- NOTE: while HTML elements have automatic validation (it appears), forms
+    <!-- NOTE: While HTML elements have automatic validation, forms
     can also be validated with JQuery (automatic methods, or pattern matching, 
     etc.) before submission 
     To prevent submission, return false in callback function called when
@@ -145,7 +147,7 @@
           <select id="catid" name="catid">
           </select>
 
-          <!-- Example of custom validation message with text input -->
+          <!-- Test example of custom validation message with text input -->
           <!--<input type="text" id="catid" name="catid" maxlength="6" min="0" max="999999" placeholder="xxxxxx"
               pattern="[0-9]{6}" oninvalid="setCustomValidity('Cat ID must be 6 digits')"
               onchange="try{setCustomValidity('')}catch(e){}">-->
