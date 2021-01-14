@@ -1,5 +1,6 @@
 <?php 
 class Database {
+  // Representing connection to mySQL database 
   public $conn; 
 
   function __construct() {
@@ -16,23 +17,23 @@ class Database {
     } 
   }
 
-  // Returns empty error message if valid, otherwise returns error message 
+  // Returns empty error message if cat ID is valid, otherwise returns error message 
   function is_valid_id($id) {
-    $err = ""; 
     if (is_null($this->conn)) {
-      $err = "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
-      return $err; 
+      return "<p class='descr'>Problem connecting to database. Cannot verify submission.</p><br>"; 
     }
 
     $sql = "SELECT * FROM bac.cats WHERE catid=" . $id;
     $result = $this->conn->query($sql);
     
     if($result->num_rows == 0) {
-      $err = "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
+      return "<p class='descr'>The cat ID you specified does not exist in the database.</p><br>"; 
     }
-    return $err;  
+    return "";  
   }
 
+  // Get all cat IDs from database 
+  // Is null if error fetching IDs 
   function idnames() {
     if (is_null($this->conn)) { 
       return null; 
@@ -44,6 +45,8 @@ class Database {
     return $result; 
   }
 
+  // Get name of cat whose ID is specified 
+  // Returns empty string if ID does not exist 
   function cat_name($id) {
     if (is_null($this->conn)) { 
       return ""; 

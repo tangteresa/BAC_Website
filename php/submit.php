@@ -11,6 +11,8 @@
 <div id="submitted">
 
 <?php 
+// Sends confirmation email once user submits form and it is validated 
+// Currently disabled 
 function send_confirmation($form_type, $values, $catname) {
   $to = $values["email"];
   $subject = "Buddy Adoption Center Inquiry Confirmation Email";
@@ -33,21 +35,25 @@ function send_confirmation($form_type, $values, $catname) {
 }
 ?>
 
-<?php  
+<?php 
+// Server-side form validation script 
+
 require_once("db.php"); 
 
 function check_input($data) {
   // Remove extra spaces 
   $data = trim($data);
-  // Remove things like <script> so less chance of hacking 
+  // Remove things like <script> for security 
   $data = htmlspecialchars($data);
   return $data;
 }
 
+// Form fields 
 $adopt = array("catid", "date1", "date2", "time1", "time2");
 $other = array("otherDescr");
 $general = array("fname", "lname", "email", "phone"); 
 
+// User-submitted form field values 
 $dict = array(
   "fname" => "", 
   "lname" => "",
@@ -61,9 +67,8 @@ $dict = array(
   "otherDescr" => ""
 ); 
 
+// Assume form is valid at first 
 $valid = True; 
-$catname = ""; 
-$form_type = ''; 
 
 // Check required fields are not empty first 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -106,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<p class='descr'>The phone format is invalid. It must be xxx-xxx-xxxx. </p><br>"; 
   }
 
+  // Check format of required fields for adoption type form 
   if ($form_type == "A") {
 
     if(!preg_match('/^[0-9]{6}$/', $dict["catid"])) {
@@ -124,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $val = $dict[$date]; 
 
       if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $val)) {
-        // HTML form for date is YYYY-MM-DD
+        // HTML format for date is YYYY-MM-DD
         $yr = intval(substr($val, 0, 4)); 
         $day = intval(substr($val, 4, 2)); 
         $month = intval(substr($val, 6, 2)); 
@@ -151,6 +157,7 @@ if ($valid) {
     echo "<p class='descr'>We will contact you within 3 business days about your adoption of $capname.</p>"; 
   }
 
+  // Confirmation email feature 
   // Use if SMTP server is setup with account inquiries@bac.com 
   // Otherwise, can test by uncommenting and also installing Papercut on machine
   // send_confirmation($form_type, $dict, $catname); 
@@ -163,21 +170,24 @@ if ($valid) {
 </div>
 
 <script>
+    // Script to store user-submitted form values if form was invalid 
+    // So that the form can be repopulated when user goes to fix their errors 
     $(document).ready(function () {
-      function convert() {
+      function save_fields() {
         var isValid = <?php echo json_encode($valid) ?>; 
         if(!isValid) {
           var fields = <?php echo json_encode($form_fields); ?>; 
           var values = <?php echo json_encode($dict); ?>; 
           var form_type = <?php echo json_encode($form_type) ?>; 
           var filler = {fill: true, formFields: fields, formVals: values, formType: form_type}; 
+
           // sessionStorage saves string key/value pairs 
-          // JSON stringify cannot stringify functions bc funcs aren't valid JSON
+          // JSON stringify cannot stringify functions since functions aren't valid JSON
+          // Available to other pages in application until browser is closed 
           sessionStorage.setItem("filler", JSON.stringify(filler)); 
         }
       }
-
-      $("#return").click(convert); 
+      $("#return").click(save_fields); 
     }); 
 </script>
 
