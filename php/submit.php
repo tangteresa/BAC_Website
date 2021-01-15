@@ -48,6 +48,56 @@ function check_input($data) {
   return $data;
 }
 
+// Check correct date format 
+function is_valid_date($date) {
+  if (preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $date)) {
+    // HTML format for date is YYYY-MM-DD
+    $yr = intval(substr($date, 0, 4)); 
+    $month = intval(substr($date, 5, 2)); 
+    $day = intval(substr($date, 8, 2));  
+    if (!checkdate($month, $day, $yr)) {
+      echo "<p class='descr'>An invalid date was submitted. </p><br>"; 
+      return false; 
+    }
+    return true; 
+  }
+  echo "<p class='descr'>An improperly formatted date was submitted. Format is YYYY-MM-DD. </p><br>"; 
+  return false; 
+}
+
+// Check correct time format 
+function is_valid_time($timeVal) {
+   if (!preg_match("/^[0-9]{2}:[0-9]{2}$/", $timeVal)) {
+     echo "<p class='descr'>An improperly formatted time was submitted. Format is HH: MM. </p><br>"; 
+     return false; 
+   }
+   return true; 
+}
+
+/* A valid datetime is not in the past, can be converted to UNIX timestamp, and
+time has format HH: MM while date has format YYYY-MM-DD */ 
+function is_valid_datetime($dateNum, $dict) {
+  $date = $dict["date" . $dateNum]; 
+  $timeVal = $dict["time" . $dateNum];
+  $validDate = is_valid_date($date); 
+  $validTime = is_valid_time($timeVal); 
+  if($validDate && $validTime) {
+    // Check if datetime is not in the past 
+    $unix = strtotime($date . " " . $timeVal); 
+    if (gettype($unix) != "integer") {
+      // Must be boolean type, meaning strtotime couldn't convert to int timestamp
+      echo "<p class='descr'>An invalid datetime was submitted. </p><br>"; 
+      return false;
+    } else if ($unix <= strtotime($_POST["currTime"])) {
+      echo "<p class='descr'>A datetime in the past was submitted. </p><br>";
+      return false; 
+    } else {
+      return true; 
+    } 
+  } 
+  return false; 
+}
+
 // Form fields 
 $adopt = array("catid", "date1", "date2", "time1", "time2");
 $other = array("otherDescr");
@@ -126,26 +176,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $catname = $db->cat_name($dict["catid"]); 
     }
     
-    foreach (array("date1", "date2") as $date) {
-      $val = $dict[$date]; 
-
-      if (!preg_match("/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/", $val)) {
-        // HTML format for date is YYYY-MM-DD
-        $yr = intval(substr($val, 0, 4)); 
-        $day = intval(substr($val, 4, 2)); 
-        $month = intval(substr($val, 6, 2)); 
-        if (!checkdate($day, $month, $yr)) {
-          $date = False; 
-          echo "<p class='descr'>An invalid date was submitted. </p><br>"; 
-        }
-      }
-    }
-
-    foreach (array("time1", "time2") as $time) {
-      if (!preg_match("/^[0-9]{2}:[0-9]{2}$/", $dict[$time])) {
-        $valid = False; 
-        echo "<p class='descr'>An invalid time was submitted. </p><br>"; 
-      }
+    foreach (array("1", "2") as $dateNum) { 
+      $validDatetime = is_valid_datetime($dateNum, $dict); 
+      $valid = $valid && $validDatetime; 
     }
   } 
 }
