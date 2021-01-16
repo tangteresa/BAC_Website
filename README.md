@@ -46,7 +46,6 @@ Recommended:
 1. Download `XAMPP` (https://www.apachefriends.org/index.html)
 2. In the XAMPP control panel, start both `Apache` and `mySQL` with the **Start** button
 3. Now we will setup the cat profile database table in mySQL: 
-
   - Go to mySQL's admin page via the **Admin** button 
   - Under `User Accounts` on the admin page, make sure you are on the **root account** 
   - Click the `Databases` tab 
