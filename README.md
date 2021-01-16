@@ -25,11 +25,19 @@ also a **video tour** showing the interactive features, found in project file
 
 `Homepage` 
 
+![Homepage](images/index.png?raw=true)
+
 `Cat profile page` 
+
+![Cats page](images/cats.png?raw=true)
 
 `Events page` 
 
+![Events page](images/events.png?raw=true)
+
 `Contact page` 
+
+![Contact page](images/contact.png?raw=true)
 
 # Viewing Full Website 
 
