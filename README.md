@@ -47,14 +47,14 @@ Recommended:
 2. In the XAMPP control panel, start both `Apache` and `mySQL` with the **Start** button
 3. Now we will setup the cat profile database table in mySQL: 
 
-  31. Go to mySQL's admin page via the **Admin** button 
-  32. Under `User Accounts` on the admin page, make sure you are on the **root account** 
-  33. Click the `Databases` tab 
-  34. Under `Create database`, type *bac* for the database name and *utf8mb4_general_ci*
+  - Go to mySQL's admin page via the **Admin** button 
+  - Under `User Accounts` on the admin page, make sure you are on the **root account** 
+  - Click the `Databases` tab 
+  - Under `Create database`, type *bac* for the database name and *utf8mb4_general_ci*
 as the collation, then click `Create` 
-  35. Go to the `Import` tab at the top, and where it says to "choose a file to import", 
+  - Go to the `Import` tab at the top, and where it says to "choose a file to import", 
 **import bac.sql** from this repo, then hit `Go` at the bottom
-  36. You should now have a table called `cats` in the `bac database`! 
+  - You should now have a table called `cats` in the `bac database`! 
 
   - NOTE: this project assumes the cats table is hosted on a server called 
   `localhost`, under account with username `root` and no password. This should
