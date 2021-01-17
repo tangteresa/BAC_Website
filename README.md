@@ -21,7 +21,7 @@ HTML, CSS, Javascript, PHP, mySQL, Apache server
 # Quick Website Tour
 Here are screenshots of each page of the website for convenience! There is
 also a **video tour** showing the interactive features, found in project file 
-`COMING SOON` in the repo. 
+`bac_website_tour.mp4` in the repo. 
 
 `Homepage` 
 
